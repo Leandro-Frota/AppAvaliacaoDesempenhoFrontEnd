@@ -1,8 +1,19 @@
-export default function InputLabel({label,type}){
+export default function InputLabel({label,type, className = "",colOrRow = "col" , textareaid = false, colInput, rowInput}){
+
+   console.log(textareaid)
+
     return (
-        <div className="flex flex-col gap-2">
+        <div className= {`flex flex-${colOrRow} gap-1`}>
             <label  >{label}</label>
-            <input type={type} className="border-2 border-gray-300 rounded outline-none p-1 w-100" />
+
+            { textareaid ? <textarea className={className} placeholder="Digite aqui sua justifcativa" cols = {colInput} rows = {rowInput} /> : 
+                <input type={type} className={className}  />
+                           
+            }
+        
+            
+            
+            
         </div>
     )
 }

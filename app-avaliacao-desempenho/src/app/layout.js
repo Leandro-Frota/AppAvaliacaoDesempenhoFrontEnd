@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <Header/>
         <div className="flex flex-row min-h-screen">
           <SideMenu/>
-          <div className="flex flex-grow min-h-screen">
+          <div className="flex flex-col gap-1 flex-grow min-h-screen">
             {children}
           </div>
         </div>
