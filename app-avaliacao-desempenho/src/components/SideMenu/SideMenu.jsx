@@ -10,6 +10,7 @@ export default function SideMenu(){
     <SideMenuItem title="Quesito 3" path="/question3" />
     <SideMenuItem title="Quesito 4" path="/question4" />
     <SideMenuItem title="Quesito 5" path="/question5" />
-    <SideMenuItem title="Resumo" path="/" />
+    <SideMenuItem title="Quesito 6" path="/question6" />
+    <SideMenuItem title="Resumo" path="/resume-pontuation" />
     </div>
 }
