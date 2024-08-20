@@ -13,7 +13,8 @@ Item({item = "item", title= "título" , description = "descrição", person=fals
             </div>
             <div>
                 {person &&
-                 <> <div className='flex flex-1 gap-2 '>            
+                 <> <div className='flex flex-1 gap-2 mt-2'>
+                    <p>Marque uma opção</p>            
                         <InputLabel
                                      label="A"
                                      type="checkbox"
@@ -31,10 +32,10 @@ Item({item = "item", title= "título" , description = "descrição", person=fals
                                     colOrRow = "row"
                       />
                     </div>
-                <div className="w-full">
+                <div className="w-full mt-4">
                     <InputLabel label="Jutificativa"
                                 textareaid = {true}
-                                className="outline-0 rounded-md"
+                                className="outline-0 rounded-md p-2"
                                 colOrRow = "col"
                                 rowInput = "4"
                                 colInput="40"/>

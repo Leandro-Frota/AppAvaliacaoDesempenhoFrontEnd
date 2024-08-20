@@ -7,7 +7,7 @@ export default function Register(){
     return (
         <div className="w-3/6  p-10">
             <div className="text-start text-xl ">
-                <h2>Cadastro de Funcionário</h2>
+                <h2 className="font-bold text-2xl">Cadastro de Funcionário</h2>
             </div>
             <div className="flex flex-col  gap-2   ">
                 <InputLabel label="Nome" type="text" className={className.input}/>
