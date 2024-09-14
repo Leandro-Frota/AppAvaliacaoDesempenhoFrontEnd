@@ -1,8 +1,36 @@
+'use client'
+import { useEffect, useState } from "react";
 import InputLabel from "../InputLabel/InputLabel";
 
-export default function 
+export default function Item({item = "item",
+                             title= "título" ,
+                             description = "descrição",
+                             person=false,
+                             course=false ,
+                             recognition = false,
+                             nameRadio = "" }){
+    const [check, setCheck] = useState(0)
+    const [enableJustify, setEnableJustify] = useState(true)
 
-Item({item = "item", title= "título" , description = "descrição", person=false, course=false , recognition = false   }){
+    function captureCheck(check){
+        setCheck(check)
+    }
+
+    console.log(check)
+    console.log(enableJustify)
+
+    useEffect(()=>{
+
+        if(check==="7"){
+            setEnableJustify(false)
+        }else{
+            setEnableJustify(true)
+        }
+    
+    },[check])
+   
+
+    
     return (
         <div className='flex flex-col  w-full justify-between gap-1 '>                
             <div className='flex'>
@@ -17,19 +45,30 @@ Item({item = "item", title= "título" , description = "descrição", person=fals
                     <p>Marque uma opção</p>            
                         <InputLabel
                                      label="A"
-                                     type="checkbox"
+                                     type="radio"
                                      className=""
                                      colOrRow = "row"
+                                     name = {nameRadio}
+                                     value = {7}
+                                     captureCheck= {captureCheck}
+                                     
                         />
                         <InputLabel label="B"
-                                     type="checkbox"
+                                     type="radio"
                                      className=""
                                      colOrRow = "row"
+                                     name = {nameRadio}
+                                     value = {4}
+                                     captureCheck= {captureCheck}
                         />
                         <InputLabel label="C"
-                                    type="checkbox"
+                                    type="radio"
                                     className=""
                                     colOrRow = "row"
+                                    name = {nameRadio}
+                                    value = {1}
+                                    captureCheck= {captureCheck}
+
                       />
                     </div>
                 <div className="w-full mt-4">
@@ -38,7 +77,8 @@ Item({item = "item", title= "título" , description = "descrição", person=fals
                                 className="outline-0 rounded-md p-2"
                                 colOrRow = "col"
                                 rowInput = "4"
-                                colInput="40"/>
+                                colInput="40"
+                                disabledJustify={enableJustify}/>
                 </div>
                 </>  }
                 {course &&
