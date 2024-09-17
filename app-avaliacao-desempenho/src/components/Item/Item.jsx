@@ -8,16 +8,29 @@ export default function Item({item = "item",
                              person=false,
                              course=false ,
                              recognition = false,
-                             nameRadio = "" }){
+                             nameRadio = "",
+                            value=0,
+                            list = false }){
     const [check, setCheck] = useState(0)
     const [enableJustify, setEnableJustify] = useState(true)
 
-    function captureCheck(check){
+
+    // let listCourses = ""
+
+    // if(list){
+    //     listCourses = "cursos-academicos"
+    // }
+
+
+    function captureCheckRadio(check){
         setCheck(check)
     }
 
-    console.log(check)
-    console.log(enableJustify)
+    // console.log(check)
+    // console.log(enableJustify)
+    // console.log(list)
+    // console.log(value)
+    
 
     useEffect(()=>{
 
@@ -50,7 +63,7 @@ export default function Item({item = "item",
                                      colOrRow = "row"
                                      name = {nameRadio}
                                      value = {7}
-                                     captureCheck= {captureCheck}
+                                     captureCheck= {captureCheckRadio}
                                      
                         />
                         <InputLabel label="B"
@@ -59,7 +72,7 @@ export default function Item({item = "item",
                                      colOrRow = "row"
                                      name = {nameRadio}
                                      value = {4}
-                                     captureCheck= {captureCheck}
+                                     captureCheck= {captureCheckRadio}
                         />
                         <InputLabel label="C"
                                     type="radio"
@@ -67,7 +80,7 @@ export default function Item({item = "item",
                                     colOrRow = "row"
                                     name = {nameRadio}
                                     value = {1}
-                                    captureCheck= {captureCheck}
+                                    captureCheck= {captureCheckRadio}
 
                       />
                     </div>
@@ -82,17 +95,20 @@ export default function Item({item = "item",
                 </div>
                 </>  }
                 {course &&
-                 <> <div className='flex w-full gap-2 '>            
+                 <> <div className='flex w-full gap-2  '>            
                         <InputLabel label="Nome do curso"
                                     type="text"
                                     className="flex-1 w-full"
                                     colOrRow = "col"
                         />
-                        <InputLabel label="Pontos"
-                                    type="number"
+                        <InputLabel label={`${value} Pontos`}
+                                    type="checkbox"
                                     className="flex-1 w-full"
                                     colOrRow = "col"
+                                    value={value}
+                                    // listCourses={listCourses}
                         />
+                        
                      
                     </div>
                 

@@ -10,21 +10,21 @@ export default function InputLabel({label,
                                     name,
                                     value,
                                     captureCheck,
-                                    disabledJustify=true}){
+                                    disabledJustify=true,
+                                    listCourses}){
     
-    const [valueRadio,setValueRadio] = useState("")
+    const [valueRadio,setValueRadio] = useState("") 
+    console.log(listCourses)
+    
 
-    
 
     function captureChangeRadio(e){
-        captureCheck(e.target.value)
-        
-               
+        captureCheck(e.target.value)     
         
     }
 
 
-    console.log(valueRadio)
+    // console.log(valueRadio)
   
 
     return (
@@ -32,9 +32,18 @@ export default function InputLabel({label,
             <label  >{label}</label>
 
             { textareaid ? <textarea className={className} placeholder="Digite aqui sua justifcativa" cols = {colInput} rows = {rowInput} disabled= {disabledJustify} /> : 
-                <input type={type} onChange={captureChangeRadio} className={className} name={name} value={value}  required/>
-                           
+                <>
+                    <input list={listCourses} type={type} onChange={captureChangeRadio} className={className} name={name} value={value}  required/>
+                        <datalist id="cursos-academicos">
+                            <option value={"Doutorado"}></option>
+                            <option value={"Mestrado"}></option>
+                            <option value={"Pós-Graduação"}></option>
+                            <option value={"Graduação"}></option>
+                        </datalist>
+                </>           
             }
+
+        
         
             
             
