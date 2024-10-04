@@ -1,3 +1,5 @@
+
+'use client'
 import InputLabel from "@/components/InputLabel/InputLabel";
 
 export default function Register(){
@@ -10,11 +12,22 @@ export default function Register(){
                 <h2 className="font-bold text-2xl">Cadastro de Funcionário</h2>
             </div>
             <div className="flex flex-col  gap-2   ">
-                <InputLabel label="Nome" type="text" className={className.input}/>
-                <InputLabel label="Matrícula" type="number" className={className.input}/>
-                <InputLabel label="Função" type="text" className={className.input}/>
-                <InputLabel label="Gerência" type="text" className={className.input}/>
-                
+                <InputLabel
+                            label="Nome"
+                            type="text"
+                            className={className.input}/>
+                <InputLabel
+                            label="Matrícula"
+                            type="number"
+                            className={className.input}/>
+                <InputLabel
+                            label="Função"
+                            type="text"
+                            className={className.input}/>
+                <InputLabel
+                            label="Gerência"
+                            type="text"
+                            className={className.input}/>               
             </div>  
 
         </div>

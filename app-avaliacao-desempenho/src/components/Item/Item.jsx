@@ -6,32 +6,31 @@ export default function Item({item = "item",
                              title= "título" ,
                              description = "descrição",
                              person=false,
-                             course=false ,
+                             course=false,
                              recognition = false,
                              nameRadio = "",
                             value=0,
-                            list = false }){
+                       
+                            valueItem}){
     const [check, setCheck] = useState(0)
     const [enableJustify, setEnableJustify] = useState(true)
 
+    // const [checkValueName, setCheckValueName] = useState({})
 
-    // let listCourses = ""
+    valueItem = check;
 
-    // if(list){
-    //     listCourses = "cursos-academicos"
-    // }
-
+    // CaptureValueItem1(check)
 
     function captureCheckRadio(check){
         setCheck(check)
     }
 
-    // console.log(check)
+    console.log(check)
+    console.log(valueItem)
     // console.log(enableJustify)
-    // console.log(list)
     // console.log(value)
     
-
+// habilitar ou desabilitar a justificativa
     useEffect(()=>{
 
         if(check==="7"){
@@ -106,7 +105,7 @@ export default function Item({item = "item",
                                     className="flex-1 w-full"
                                     colOrRow = "col"
                                     value={value}
-                                    // listCourses={listCourses}
+                                   
                         />
                         
                      
