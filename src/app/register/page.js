@@ -1,5 +1,6 @@
 
 'use client'
+import RoundedButton from "@/components/button/button";
 import InputLabel from "@/components/InputLabel/InputLabel";
 
 export default function Register(){
@@ -28,7 +29,12 @@ export default function Register(){
                             label="Gerência"
                             type="text"
                             className={className.input}/>               
-            </div>  
+            </div> 
+            <div className="mt-6">
+                <RoundedButton
+                    text = "Cadastrar"/>
+            </div>
+             
 
         </div>
         

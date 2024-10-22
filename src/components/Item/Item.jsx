@@ -53,48 +53,50 @@ export default function Item({item = "item",
             </div>
             <div>
                 {person &&
-                 <> <div className='flex flex-1 gap-2 mt-2'>
-                    <p>Marque uma opção</p>            
-                        <InputLabel
-                                     label="A"
-                                     type="radio"
-                                     className=""
-                                     colOrRow = "row"
-                                     name = {nameRadio}
-                                     value = {7}
-                                     captureCheck= {captureCheckRadio}
-                                     
-                        />
-                        <InputLabel label="B"
-                                     type="radio"
-                                     className=""
-                                     colOrRow = "row"
-                                     name = {nameRadio}
-                                     value = {4}
-                                     captureCheck= {captureCheckRadio}
-                        />
-                        <InputLabel label="C"
-                                    type="radio"
-                                    className=""
-                                    colOrRow = "row"
-                                    name = {nameRadio}
-                                    value = {1}
-                                    captureCheck= {captureCheckRadio}
+                 <>
+                    <div className='flex flex-1 gap-2 mt-2'>
+                        <p>Marque uma opção</p>            
+                            <InputLabel
+                                        label="A"
+                                        type="radio"
+                                        className=""
+                                        colOrRow = "row"
+                                        name = {nameRadio}
+                                        value = {7}
+                                        captureCheck= {captureCheckRadio}
+                                        
+                            />
+                            <InputLabel label="B"
+                                        type="radio"
+                                        className=""
+                                        colOrRow = "row"
+                                        name = {nameRadio}
+                                        value = {4}
+                                        captureCheck= {captureCheckRadio}
+                            />
+                            <InputLabel label="C"
+                                        type="radio"
+                                        className=""
+                                        colOrRow = "row"
+                                        name = {nameRadio}
+                                        value = {1}
+                                        captureCheck= {captureCheckRadio}
 
-                      />
+                        />
+                        </div>
+                    <div className="w-full mt-4">
+                        <InputLabel label="Jutificativa"
+                                    textareaid = {true}
+                                    className="outline-0 rounded-md p-2"
+                                    colOrRow = "col"
+                                    rowInput = "4"
+                                    colInput="40"
+                                    disabledJustify={enableJustify}/>
                     </div>
-                <div className="w-full mt-4">
-                    <InputLabel label="Jutificativa"
-                                textareaid = {true}
-                                className="outline-0 rounded-md p-2"
-                                colOrRow = "col"
-                                rowInput = "4"
-                                colInput="40"
-                                disabledJustify={enableJustify}/>
-                </div>
                 </>  }
                 {course &&
-                 <> <div className='flex w-full gap-2  '>            
+                 <>
+                  <div className='flex w-full gap-2  '>            
                         <InputLabel label="Nome do curso"
                                     type="text"
                                     className="flex-1 w-full"
@@ -113,7 +115,8 @@ export default function Item({item = "item",
                 
                 </>  }
                 {recognition &&
-                 <> <div className='flex w-full gap-2 '>            
+                 <>
+                    <div className='flex w-full gap-2 '>            
                        
                         <InputLabel label="Pontos"
                                     type="number"

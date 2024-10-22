@@ -3,7 +3,7 @@ import Item from "@/components/Item/Item"
 export  default function Question5(){
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 6 </h2>
+            <h2 className="font-bold text-2xl">Quesito 6 - Reconhecimento interno </h2>
       
             <Item
                 item="6.1" 

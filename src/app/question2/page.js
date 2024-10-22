@@ -4,7 +4,7 @@ import Item from "@/components/Item/Item"
 export  default function Question2(){
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 2 </h2>
+            <h2 className="font-bold text-2xl">Quesito 2 - Trabalho em equipe </h2>
       
             <Item
                 item="2.1"
