@@ -3,43 +3,47 @@ import { useEffect, useState } from "react";
 import InputLabel from "../InputLabel/InputLabel";
 
 export default function Item({item = "item",
-                             title= "título" ,
-                             description = "descrição",
-                             person=false,
-                             course=false,
-                             recognition = false,
-                             nameRadio = "",
-                            value=0,
-                       
+                            title= "título" ,
+                            description = "descrição",
+                            person=false,
+                            course=false,
+                            recognition = false,
+                            nameRadio = "",
+                            value=0,                        
                             valueItem}){
-    const [check, setCheck] = useState(0)
+    const [checkRadio, setCheckRadio] = useState(0)
+    const [checkBox,setCheckBox] = useState(0)
+    const[inputText, setInputText] = useState("")
     const [enableJustify, setEnableJustify] = useState(true)
 
-    // const [checkValueName, setCheckValueName] = useState({})
+    valueItem = checkRadio;
 
-    valueItem = check;
-
-    // CaptureValueItem1(check)
 
     function captureCheckRadio(check){
-        setCheck(check)
+        setCheckRadio(check)
+    }
+    function captureCheckbox(check){
+        setCheckBox(check)
+    }
+    function captureOnChangeText(check){
+        setInputText(check)
     }
 
-    console.log(check)
-    console.log(valueItem)
-    // console.log(enableJustify)
-    // console.log(value)
+    console.log(checkRadio)
+    console.log(checkBox)
+    console.log(inputText)
+    // console.log(valueItem)
     
 // habilitar ou desabilitar a justificativa
     useEffect(()=>{
 
-        if(check==="7"){
+        if(checkRadio==="7"){
             setEnableJustify(false)
         }else{
             setEnableJustify(true)
         }
     
-    },[check])
+    },[checkRadio])
    
 
     
@@ -101,19 +105,18 @@ export default function Item({item = "item",
                                     type="text"
                                     className="flex-1 w-full"
                                     colOrRow = "col"
-                        />
+                                    captureOnChangeText= {captureOnChangeText}/>
                         <InputLabel label={`${value} Pontos`}
                                     type="checkbox"
                                     className="flex-1 w-full"
                                     colOrRow = "col"
                                     value={value}
-                                   
-                        />
-                        
+                                    captureCheckbox= {captureCheckbox}/>                      
                      
                     </div>
                 
-                </>  }
+                </>
+                }
                 {recognition &&
                  <>
                     <div className='flex w-full gap-2 '>            

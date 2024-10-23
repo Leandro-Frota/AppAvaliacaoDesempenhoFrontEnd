@@ -10,21 +10,23 @@ export default function InputLabel({label,
                                     name,
                                     value,
                                     captureCheck,
+                                    captureOnChangeText,
+                                    captureCheckbox,
                                     disabledJustify=true,
-                                    listCourses}){
+                                    }){
     
     const [valueRadio,setValueRadio] = useState("")   
 
-
-    function captureChangeRadio(e){
-        captureCheck(e.target.value)     
-        
+    function captureChange(e){
+        if(type === "text"){
+             captureOnChangeText(e.target.value)
+        }else if(type === "checkbox"){
+             captureCheckbox(e.target.value)
+        }else{
+            captureCheck(e.target.value)
+        }
     }
-
-
-    // console.log(valueRadio)
-  
-
+ 
     return (
         <div className= {`flex flex-${colOrRow} gap-1`}>
             <label  >{label}</label>
@@ -39,25 +41,15 @@ export default function InputLabel({label,
                          : 
                
                <>
-                    <input
-                            list={listCourses}
+                    <input                      
                             type={type}
-                            onChange={captureChangeRadio}
+                            onChange={captureChange}
                             className={className}
                             name={name}
                             value={value}
-                            required/>
-                    <datalist id="cursos-academicos">
-                        <option value={"Doutorado"}></option>
-                        <option value={"Mestrado"}></option>
-                        <option value={"Pós-Graduação"}></option>
-                        <option value={"Graduação"}></option>
-                    </datalist>
+                            required/>                   
                 </>           
-            }
-
-        
-            
+            }       
             
             
         </div>

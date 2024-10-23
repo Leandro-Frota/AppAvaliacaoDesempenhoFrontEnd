@@ -12,9 +12,6 @@ export  default function Question1(){
 
     const value1 = 0
     console.log(value1)
-
-    
-
     
     return (
         <div className='w-full h-full flex flex-col gap-2 p-10'>
@@ -24,7 +21,8 @@ export  default function Question1(){
                 nameRadio="1.1"
                 title="Conhecimento técnico"
                 description="Descrição do item"
-                person course = {false}
+                person
+                course = {false}
                 recognition = {false}
                 // CaptureValueItem1 = {CaptureValueItem1}
                 valueItem = {value1}
