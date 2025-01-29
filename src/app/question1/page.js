@@ -1,17 +1,25 @@
 'use client'
 import Item from "@/components/Item/Item"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 export  default function Question1(){
 
-    // const [valueItem1,setValueItem1] = useState(0)
 
-    // function CaptureValueItem1(value){
-    //        setValueItem1(value)
-    // }
+    const [values, setValues] = useState({});
 
-    const value1 = 0
-    console.log(value1)
+    console.log(values);
+
+    const captureValueRadio = useCallback((item, value, justify) => {
+        
+        setValues(prevValues => ({
+            ...prevValues,
+            [item]: { value, justify }
+        }));
+    }, []);
+
+
+
+   
     
     return (
         <div className='w-full h-full flex flex-col gap-2 p-10'>
@@ -24,8 +32,8 @@ export  default function Question1(){
                 person
                 course = {false}
                 recognition = {false}
-                // CaptureValueItem1 = {CaptureValueItem1}
-                valueItem = {value1}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
             <Item
                 item="1.2"
@@ -35,6 +43,8 @@ export  default function Question1(){
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
             <Item
                 item="1.3"
@@ -44,6 +54,8 @@ export  default function Question1(){
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
             <Item
                 item="1.4"
@@ -53,33 +65,41 @@ export  default function Question1(){
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
               <Item
-                item="1.4"
-                nameRadio="1.4"
+                item="1.5"
+                nameRadio="1.5"
                 title="Organização"
                 description="Descrição do item"
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
               <Item
-                item="1.4"
-                nameRadio="1.4"
+                item="1.6"
+                nameRadio="1.6"
                 title="Comunicação"
                 description="Descrição do item"
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
              <Item
-                item="1.4"
-                nameRadio="1.4"
+                item="1.7"
+                nameRadio="1.7"
                 title="Autodesenvolvimento"
                 description="Descrição do item"
                 person
                 course = {false}
                 recognition = {false}
+                valueItem = {0}
+                captureValueRadio = {captureValueRadio}
             />
             <p>Pontuação: </p>
                                     

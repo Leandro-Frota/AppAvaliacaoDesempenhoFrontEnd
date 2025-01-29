@@ -10,13 +10,35 @@ export default function Item({item = "item",
                             recognition = false,
                             nameRadio = "",
                             value=0,                        
-                            valueItem}){
+                            valueItem,
+                            captureValueRadio,
+                            captureValueCheckbox,
+                             captureValuesNumber}){
     const [checkRadio, setCheckRadio] = useState(0)
     const [checkBox,setCheckBox] = useState(0)
+    const [checkNumber, setCheckNumber] = useState(0)
     const[inputText, setInputText] = useState("")
     const [enableJustify, setEnableJustify] = useState(true)
 
-    valueItem = checkRadio;
+
+
+    valueItem = checkRadio; 
+
+    useEffect(()=>{
+        if(checkRadio){
+            captureValueRadio(item,checkRadio,inputText)
+        }
+
+        if(checkBox){
+            captureValueCheckbox(item,checkBox,inputText)
+        }
+
+        if(checkNumber){
+            captureValuesNumber(item,checkNumber)
+        }
+    
+    },[item,checkRadio,inputText,captureValueRadio,checkBox,captureValueCheckbox, checkNumber, captureValuesNumber])
+
 
 
     function captureCheckRadio(check){
@@ -28,11 +50,10 @@ export default function Item({item = "item",
     function captureOnChangeText(check){
         setInputText(check)
     }
+    function captureCheckNumber(check){
+        setCheckNumber(check)
+    }
 
-    console.log(checkRadio)
-    console.log(checkBox)
-    console.log(inputText)
-    // console.log(valueItem)
     
 // habilitar ou desabilitar a justificativa
     useEffect(()=>{
@@ -67,7 +88,9 @@ export default function Item({item = "item",
                                         colOrRow = "row"
                                         name = {nameRadio}
                                         value = {7}
-                                        captureCheck= {captureCheckRadio}
+                                        captureCheckRadio= {captureCheckRadio}
+                                      
+                                    
                                         
                             />
                             <InputLabel label="B"
@@ -76,7 +99,9 @@ export default function Item({item = "item",
                                         colOrRow = "row"
                                         name = {nameRadio}
                                         value = {4}
-                                        captureCheck= {captureCheckRadio}
+                                        captureCheckRadio= {captureCheckRadio}
+                            
+                                    
                             />
                             <InputLabel label="C"
                                         type="radio"
@@ -84,7 +109,9 @@ export default function Item({item = "item",
                                         colOrRow = "row"
                                         name = {nameRadio}
                                         value = {1}
-                                        captureCheck= {captureCheckRadio}
+                                        captureCheckRadio= {captureCheckRadio}
+                                       
+                             
 
                         />
                         </div>
@@ -95,7 +122,8 @@ export default function Item({item = "item",
                                     colOrRow = "col"
                                     rowInput = "4"
                                     colInput="40"
-                                    disabledJustify={enableJustify}/>
+                                    disabledJustify={enableJustify}
+                                    captureOnChangeText={captureOnChangeText}/>
                     </div>
                 </>  }
                 {course &&
@@ -123,9 +151,12 @@ export default function Item({item = "item",
                        
                         <InputLabel label="Pontos"
                                     type="number"
+                                    minPound="0"
+                                    maxPound="10"
                                     className="flex-1 w-full"
                                     colOrRow = "col"
-                        />
+                                    captureCheckNumber={captureCheckNumber}/>
+                        
                      
                     </div>
                 

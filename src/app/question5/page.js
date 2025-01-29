@@ -1,6 +1,34 @@
+'use client'
 import Item from "@/components/Item/Item"
+import { useState, useCallback } from "react";
 
 export  default function Question5(){
+
+    const [values, setValues] = useState({});
+
+    console.log(values);
+
+    const captureValueCheckbox = useCallback((item, value, nameCourse) => {
+        setValues(prevValues => {
+            const newValues = {
+                ...prevValues,
+                [item]: { value, nameCourse }  
+            };
+    
+            //ordenar os valores do objeto
+            const sortedEntries = Object.entries(newValues)
+                .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))                
+                .reduce((acc, [key, val]) => {
+                    acc[key] = val;
+                    return acc;
+                }, {});
+    
+            return sortedEntries;
+        });
+    }, []); 
+    
+
+
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
             <h2 className="font-bold text-2xl">Quesito 5 - Desenvolvimento Profissional </h2>
@@ -12,7 +40,9 @@ export  default function Question5(){
                 description="Exemplo: Cursos Promovidos pela empresa 80 Horas 4 Pontos"
                 person={false}
                 recognition = {false}
-                course value={4} />
+                course
+                value={4} 
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
                 item="5.2"
                 nameRadio="5.2"
@@ -20,7 +50,8 @@ export  default function Question5(){
                 description="Exemplo: Cursos Promovidos pela empresa 40 Horas 3 Pontos"
                 person={false}
                 recognition = {false}
-                course value={3} />
+                course value={3}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
                 item="5.3"
                 nameRadio="5.3"
@@ -29,7 +60,8 @@ export  default function Question5(){
                 person={false}
                 recognition = {false}
                 course
-                value={5} />
+                value={5}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
                 item="5.4"
                 nameRadio="5.4"
@@ -38,44 +70,48 @@ export  default function Question5(){
                 person={false}
                 recognition = {false}
                 course
-                value={1} />
+                value={1}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
-                item="5.4"
-                nameRadio="5.4"
+                item="5.5"
+                nameRadio="5.5"
                 title=""
                 description="Exemplo: Doutorado 10 Pontos"
                 person={false}
                 recognition = {false}
                 course
-                value={10} />
+                value={10}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
-                item="5.4"
-                nameRadio="5.4"
+                item="5.6"
+                nameRadio="5.6"
                 title=""
                 description="Exemplo: Mestrado 9 Pontos"
                 person={false}
                 recognition = {false}
                 course
-                value={9} />
+                value={9}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item
-                item="5.4"
-                nameRadio="5.4"
+                item="5.7"
+                nameRadio="5.7"
                 title=""
                 description="Exemplo: Pós-graduação 8 Pontos"
                 person={false}
                 recognition = {false}
                 course
-                value={8} />
+                value={8}
+                captureValueCheckbox={captureValueCheckbox}/>
             <Item 
-                item="5.4"
-                nameRadio="5.4"
+                item="5.8"
+                nameRadio="5.8"
                 title=""
                 description="Exemplo: Graduação 7 Pontos"
                 person={false}
                 recognition = {false}
                 course
-                value={7} />
-            {/* <Item item="5.5"  nameRadio="5.5"  title="" description="Exemplo: Doutorado(10 Pontos,)Mestrado(9 Pontos),Especialização(8 Pontos),Graduação( 7 Pontos)..." person={false} recognition = {false} course list={true} /> */}
+                value={7}
+                captureValueCheckbox={captureValueCheckbox}/>          
             
                                     
         </div>

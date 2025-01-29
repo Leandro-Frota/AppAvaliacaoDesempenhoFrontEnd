@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react"
 
 export default function InputLabel({label,
@@ -9,22 +10,33 @@ export default function InputLabel({label,
                                     rowInput,
                                     name,
                                     value,
-                                    captureCheck,
+                                    captureCheckRadio,
                                     captureOnChangeText,
                                     captureCheckbox,
+                                    captureCheckNumber,                                  
                                     disabledJustify=true,
+                                    maxPound,
+                                    minPound,
                                     }){
     
-    const [valueRadio,setValueRadio] = useState("")   
+  
 
     function captureChange(e){
-        if(type === "text"){
-             captureOnChangeText(e.target.value)
-        }else if(type === "checkbox"){
-             captureCheckbox(e.target.value)
-        }else{
-            captureCheck(e.target.value)
+        if(type === "checkbox"){
+             captureCheckbox(e.target.value)          
+      
+        }else if(type === "radio"){
+            captureCheckRadio(e.target.value)
+
+        }else if(type === "number"){
+            captureCheckNumber(e.target.value)
         }
+  
+
+    }
+
+    function captureTextJustify(value){
+        captureOnChangeText(value)
     }
  
     return (
@@ -37,17 +49,20 @@ export default function InputLabel({label,
                             placeholder="Digite aqui sua justifcativa"
                             cols = {colInput}
                             rows = {rowInput}
-                            disabled= {disabledJustify}/>
+                            disabled= {disabledJustify}
+                            onChange={captureTextJustify}/>
                          : 
                
                <>
                     <input                      
                             type={type}
-                            onChange={captureChange}
+                            onChange={captureOnChangeText ? captureTextJustify : captureChange}
                             className={className}
                             name={name}
                             value={value}
-                            required/>                   
+                            required
+                            min={minPound}
+                            max={maxPound}/>                   
                 </>           
             }       
             
