@@ -13,7 +13,8 @@ export default function InputLabel({label,
                                     captureCheckRadio,
                                     captureOnChangeText,
                                     captureCheckbox,
-                                    captureCheckNumber,                                  
+                                    captureCheckNumber,
+                                    captureValuesRegister,                                  
                                     disabledJustify=true,
                                     maxPound,
                                     minPound,
@@ -35,8 +36,12 @@ export default function InputLabel({label,
 
     }
 
-    function captureTextJustify(value){
-        captureOnChangeText(value)
+    function captureText(value){
+        if(captureValuesRegister){
+            captureValuesRegister(name, value.target.value)}
+        else{
+            captureOnChangeText(value)
+        }
     }
  
     return (
@@ -50,13 +55,13 @@ export default function InputLabel({label,
                             cols = {colInput}
                             rows = {rowInput}
                             disabled= {disabledJustify}
-                            onChange={captureTextJustify}/>
+                            onChange={captureText}/>
                          : 
                
                <>
                     <input                      
                             type={type}
-                            onChange={captureOnChangeText ? captureTextJustify : captureChange}
+                            onChange={captureOnChangeText || captureValuesRegister ? captureText : captureChange}
                             className={className}
                             name={name}
                             value={value}
