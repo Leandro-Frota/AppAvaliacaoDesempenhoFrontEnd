@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sistema de Avaliação de Desempenho
 
-## Getting Started
+Este é um sistema de avaliação de desempenho desenvolvido com Next.js. Cada página representa um quesito de avaliação, permitindo que o usuário atribua uma nota e, caso seja a nota máxima, forneça uma justificativa. Os dados podem ser armazenados para posterior análise.
 
-First, run the development server:
+## Tecnologias Utilizadas
 
-```bash
+- [Next.js](https://nextjs.org/)
+- Tailwind
+
+## Funcionalidades
+
+- Navegação entre páginas de quesitos de avaliação.
+- Formulário para registrar notas e justificativas.
+- Exibição dos resultados da avaliação.
+- Estrutura para integração com uma API para armazenamento de dados.
+
+## Instalação e Execução
+
+```sh
+# Clone o repositório:
+git clone https://github.com/seu-usuario/sistema-avaliacao.git
+cd sistema-avaliacao
+
+# Instale as dependências:
+npm install
+
+
+# Inicie o servidor de desenvolvimento:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse no navegador: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Melhorias Futuras
 
-To learn more about Next.js, take a look at the following resources:
+- Implementação de um banco de dados (MongoDB, PostgreSQL, Firebase etc.).
+- Adição de autenticação para associar avaliações a usuários.
+- Criação de um painel administrativo para visualizar e exportar os resultados.
+- Criação de módulos para colaboradores, RH e Setores.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+Desenvolvido por [Leandro Frota](https://github.com/Leandro-Frota).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
