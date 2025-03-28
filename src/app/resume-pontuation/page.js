@@ -14,10 +14,7 @@ export  default function ResumePontuation(){
                     <ResumeQuestion titleResumeQuestion="Quesito 5"/>
                     <ResumeQuestion titleResumeQuestion="Quesito 6"/>
                 </div>
-
-            </div>
-                     
-                                                
+            </div>                                      
         </div>
     )
 }

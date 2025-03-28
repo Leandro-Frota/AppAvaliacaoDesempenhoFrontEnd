@@ -3,13 +3,9 @@ import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react";
 
 export  default function Question2(){
-
-        const [values, setValues] = useState({});
+        const [values, setValues] = useState({});    
     
-        console.log(values);
-    
-        const captureValueRadio = useCallback((item, value, justify) => {
-            
+        const captureValueRadio = useCallback((item, value, justify) => {            
             setValues(prevValues => ({
                 ...prevValues,
                 [item]: { value, justify }
@@ -18,8 +14,7 @@ export  default function Question2(){
     
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 2 - Trabalho em equipe </h2>
-      
+            <h2 className="font-bold text-2xl">Quesito 2 - Trabalho em equipe </h2>      
             <Item
                 item="2.1"
                 nameRadio="2.1"
@@ -37,9 +32,7 @@ export  default function Question2(){
                 person
                 course = {false}
                 recognition = {false}
-                captureValueRadio={captureValueRadio} />
-            
-                                    
+                captureValueRadio={captureValueRadio} />                                            
         </div>
     )
 }

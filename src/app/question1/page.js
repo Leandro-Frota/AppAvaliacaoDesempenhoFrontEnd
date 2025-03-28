@@ -3,28 +3,44 @@ import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react"
 
 export  default function Question1(){
-
-
     const [values, setValues] = useState({});
-
     console.log(values);
 
-    const captureValueRadio = useCallback((item, value, justify) => {
+    const handleRadioChange  = useCallback((item, score, justification) => {
         
         setValues(prevValues => ({
             ...prevValues,
-            [item]: { value, justify }
+            [item]: { score, justification }
         }));
-    }, []);
+    }, []); 
 
-
-
-   
+    const questions = [
+        {id: 1.1, title: "Conhecimento técnico", description: "Descrição do item"},
+        {id: 1.2, title: "Capacidade analítica", description: "Descrição do item"},
+        {id: 1.3, title: "Inovação", description: "Descrição do item"},
+        {id: 1.4, title: "Geração de conhecimento", description: "Descrição do item"},
+        {id: 1.5, title: "Organização", description: "Descrição do item"},
+    ]
     
     return (
         <div className='w-full h-full flex flex-col gap-2 p-10'>
             <h2 className="font-bold text-2xl">Quesito 1 - Prepara e Qualificação </h2>
-            <Item
+            {questions.map((question) => (
+                <Item
+                    key={question.id}
+                    item={question.id}
+                    nameRadio={question.id}
+                    title={question.title}
+                    description={question.description}
+                    person
+                    course = {false}
+                    recognition = {false}
+                    valueItem = {0}
+                    handleRadioChange = {handleRadioChange}
+                />
+            ))}
+
+            {/* <Item
                 item="1.1"
                 nameRadio="1.1"
                 title="Conhecimento técnico"
@@ -33,7 +49,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
             <Item
                 item="1.2"
@@ -44,7 +60,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
             <Item
                 item="1.3"
@@ -55,7 +71,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
             <Item
                 item="1.4"
@@ -66,7 +82,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
               <Item
                 item="1.5"
@@ -77,7 +93,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
               <Item
                 item="1.6"
@@ -88,7 +104,7 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
+                captureValueRadio = {handleRadioChange}
             />
              <Item
                 item="1.7"
@@ -99,10 +115,9 @@ export  default function Question1(){
                 course = {false}
                 recognition = {false}
                 valueItem = {0}
-                captureValueRadio = {captureValueRadio}
-            />
-            <p>Pontuação: </p>
-                                    
+                captureValueRadio = {handleRadioChange}
+            /> */}
+            <p>Pontuação: </p>                                    
         </div>
     )
 }

@@ -1,11 +1,10 @@
 "use client"
 
-import Register from "./register/page";
 
 export default function Home() {
   return (
-    <main className="flex h-screen flex-col items-center p-10">
-      {/* <Register/> */}
+    <main className="flex h-screen flex-col items-center">
+
       <p>
 
           A avaliação de desempenho de funcionários é uma ferramenta essencial nas empresas para medir a eficiência,

@@ -3,10 +3,7 @@ import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
 
 export  default function Question5(){
-
-    const [values, setValues] = useState({});
-
-    console.log(values);
+    const [values, setValues] = useState({});   
 
     const captureValueCheckbox = useCallback((item, value, nameCourse) => {
         setValues(prevValues => {
@@ -25,14 +22,11 @@ export  default function Question5(){
     
             return sortedEntries;
         });
-    }, []); 
-    
-
+    }, []);
 
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 5 - Desenvolvimento Profissional </h2>
-      
+            <h2 className="font-bold text-2xl">Quesito 5 - Desenvolvimento Profissional </h2>      
             <Item
                 item="5.1"
                 nameRadio="5.1"
@@ -111,9 +105,7 @@ export  default function Question5(){
                 recognition = {false}
                 course
                 value={7}
-                captureValueCheckbox={captureValueCheckbox}/>          
-            
-                                    
+                captureValueCheckbox={captureValueCheckbox}/>
         </div>
     )
 }

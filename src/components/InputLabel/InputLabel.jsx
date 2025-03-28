@@ -1,5 +1,4 @@
 'use client'
-import { useState } from "react"
 
 export default function InputLabel({label,
                                     type,
@@ -19,8 +18,6 @@ export default function InputLabel({label,
                                     maxPound,
                                     minPound,
                                     }){
-    
-  
 
     function captureChange(e){
         if(type === "checkbox"){
@@ -32,8 +29,6 @@ export default function InputLabel({label,
         }else if(type === "number"){
             captureCheckNumber(e.target.value)
         }
-  
-
     }
 
     function captureText(value){
@@ -45,33 +40,30 @@ export default function InputLabel({label,
     }
  
     return (
-        <div className= {`flex flex-${colOrRow} gap-1`}>
-            <label  >{label}</label>
-
-            { textareaid ?
-                <textarea
-                            className={className}
-                            placeholder="Digite aqui sua justifcativa"
-                            cols = {colInput}
-                            rows = {rowInput}
-                            disabled= {disabledJustify}
-                            onChange={captureText}/>
-                         : 
-               
-               <>
-                    <input                      
-                            type={type}
-                            onChange={captureOnChangeText || captureValuesRegister ? captureText : captureChange}
-                            className={className}
-                            name={name}
-                            value={value}
-                            required
-                            min={minPound}
-                            max={maxPound}/>                   
-                </>           
-            }       
-            
-            
-        </div>
-    )
+                <div className= {`flex flex-${colOrRow} gap-1`}>
+                    <label  >{label}</label>
+                    { textareaid ?
+                            <textarea
+                                        className={className}
+                                        placeholder="Digite aqui sua justifcativa"
+                                        cols = {colInput}
+                                        rows = {rowInput}
+                                        disabled= {disabledJustify}
+                                        onChange={captureText}
+                            />
+                                :               
+                            <>
+                                <input                      
+                                        type={type}
+                                        onChange={captureOnChangeText || captureValuesRegister ? captureText : captureChange}
+                                        className={className}
+                                        name={name}
+                                        value={value}
+                                        required
+                                        min={minPound}
+                                        max={maxPound}/>                   
+                            </>           
+                    }    
+                </div>
+            )
 }

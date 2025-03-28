@@ -1,14 +1,13 @@
 import { useRouter } from "next/navigation"
 
 export default function SideMenuItem({title,path}){
-
    const router = useRouter();
 
    function goToPath(){
       if(path){
           router.push(path);
       }
-  }
+   }
    
     return (
          <div
