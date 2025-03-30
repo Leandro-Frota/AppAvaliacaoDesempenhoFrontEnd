@@ -35,7 +35,7 @@ export default function InputLabel({label,
         if(captureValuesRegister){
             captureValuesRegister(name, value.target.value)}
         else{
-            captureOnChangeText(value)
+            captureOnChangeText(value.target.value)
         }
     }
  

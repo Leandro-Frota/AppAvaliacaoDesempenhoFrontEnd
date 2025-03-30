@@ -4,35 +4,36 @@ import { useCallback, useState } from "react";
 
 export  default function Question2(){
         const [values, setValues] = useState({});    
-    
-        const captureValueRadio = useCallback((item, value, justify) => {            
+       
+        const handleRadioChange = useCallback((item, score, justification) => {            
             setValues(prevValues => ({
                 ...prevValues,
-                [item]: { value, justify }
+                [item]: { score, justification }
             }));
         }, []);
+
+        const questions = [
+            {id: 2.1, title: "título do item", description: "Descrição do item"},
+            {id: 2.2, title: "título do item", description: "Descrição do item"},
+        ]
     
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 2 - Trabalho em equipe </h2>      
-            <Item
-                item="2.1"
-                nameRadio="2.1"
-                title="título do item"
-                description="Descrição do item"
-                person
-                course = {false}
-                recognition = {false}
-                captureValueRadio={captureValueRadio} />
-            <Item
-                item="2.2"
-                nameRadio="2.2"
-                title="título do item"
-                description="Descrição do item"
-                person
-                course = {false}
-                recognition = {false}
-                captureValueRadio={captureValueRadio} />                                            
+            <h2 className="font-bold text-2xl">Quesito 2 - Trabalho em equipe </h2> 
+            {questions.map((question) => (
+                <Item
+                    key={question.id}
+                    item={question.id}
+                    nameRadio={question.id}
+                    title={question.title}
+                    description={question.description}
+                    person
+                    course = {false}
+                    recognition = {false}
+                    handleRadioChange={handleRadioChange}
+                />
+            ))}     
+                                                
         </div>
     )
 }

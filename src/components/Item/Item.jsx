@@ -12,8 +12,8 @@ export default function Item({
         nameRadio = "",
         value=0,
         handleRadioChange,
-        captureValueCheckbox,
-        captureValuesNumber
+        handleCheckBoxChange,
+        handleNumberChange
 }) {
         const [selectedRadio, setSelectedRadio] = useState(0)
         const [selectedCheckbox, setSelectedCheckbox] = useState(0)
@@ -26,15 +26,15 @@ export default function Item({
             handleRadioChange(item,selectedRadio,justification)
         }
 
-        if(selectedCheckbox && captureValueCheckbox){
-            captureValueCheckbox(item,selectedCheckbox,justification)
+        if(selectedCheckbox && handleCheckBoxChange){
+            handleCheckBoxChange(item,selectedCheckbox,justification)
         }
 
-        if(selectedNumber && captureValuesNumber){
-            captureValuesNumber(item,selectedNumber)
+        if(selectedNumber && handleNumberChange){
+            handleNumberChange(item,selectedNumber)
         }
     
-    },[selectedRadio,selectedCheckbox,selectedNumber,justification,handleRadioChange,captureValueCheckbox,captureValuesNumber,item])
+    },[selectedRadio,selectedCheckbox,selectedNumber,justification,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
 
     
 // habilitar ou desabilitar a justificativa

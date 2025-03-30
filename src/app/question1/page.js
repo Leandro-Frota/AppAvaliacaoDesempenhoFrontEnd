@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 
 export  default function Question1(){
     const [values, setValues] = useState({});
-    console.log(values);
+    console.log(values); 
 
     const handleRadioChange  = useCallback((item, score, justification) => {
         
