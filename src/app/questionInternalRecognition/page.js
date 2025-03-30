@@ -1,10 +1,12 @@
 'use client'
+import ButtonSubmit from "@/components/Button/button";
 import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 export  default function Question6(){
     const [values, setValues] = useState({});
-    console.log(values);
+    const router = useRouter();
 
     const handleNumberChange = useCallback((item, value) => {
         setValues(prevValues => ({
@@ -12,6 +14,13 @@ export  default function Question6(){
             [item]: { value }
         }));
     }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
+        console.log(values);
+        router.push('/'); // Redireciona para a próxima página
+    }
 
     const  questions = [
         {id: 6.1, title: "Reconhecimento", description: "Elogio : Realiza o trabalho...."},
@@ -33,7 +42,8 @@ export  default function Question6(){
                     recognition = {true}
                     handleNumberChange={handleNumberChange}
                 />
-            ))} 
+            ))}
+            <ButtonSubmit onClick={handleSubmit} text="Avançar"/>
         </div>
     )
 }

@@ -1,15 +1,25 @@
 'use client'
 import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+import ButtonSubmit from "@/components/Button/button";
 
 export  default function Question4(){
     const [values, setValues] = useState({});
+    const router = useRouter();
     const handleRadioChange = useCallback((item, score, justification) => {        
         setValues(prevValues => ({
             ...prevValues,
             [item]: { score, justification }
         }));
     }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
+        console.log(values);
+        router.push('/questionInternalRecognition'); // Redireciona para a próxima página
+    }
 
     const questions = [
         {id: 4.1, title: "título do item", description: "Descrição do item"},
@@ -33,7 +43,8 @@ export  default function Question4(){
                     recognition = {false}
                     handleRadioChange={handleRadioChange}
                 />
-            ))}    
+            ))}
+            <ButtonSubmit onClick={handleSubmit} text="Avançar"/>
                                                 
         </div>
     )
