@@ -43,7 +43,7 @@ export  default function Question6(){
                     handleNumberChange={handleNumberChange}
                 />
             ))}
-            <ButtonSubmit onClick={handleSubmit} text="Avançar"/>
+            <ButtonSubmit onClick={handleSubmit} text="Concluir"/>
         </div>
     )
 }

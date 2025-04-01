@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Header/>
-        <div className="flex flex-row min-h-screen">
+        <div className="flex flex-row min-h-screen ">
           <SideMenu/>
           <div className="flex flex-col gap-1 flex-grow min-h-screen">
             {children}

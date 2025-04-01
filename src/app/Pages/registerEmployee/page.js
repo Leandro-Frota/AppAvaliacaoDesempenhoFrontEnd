@@ -26,7 +26,7 @@ export default function Register(){
         //logica para enviar os dados para o backend
 
         console.log("Cadastrado com sucesso")
-        router.push('/questionPreparationQualification'); // Redireciona para a próxima página
+        router.push('/Pages/questionPreparationQualification'); // Redireciona para a próxima página
     }
 
     const inputs = [

@@ -20,7 +20,7 @@ export  default function Question2(){
             e.preventDefault();
             // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
             console.log(values);
-            router.push('/questionCommimentResults'); // Redireciona para a próxima página
+            router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página
         }
 
         const questions = [

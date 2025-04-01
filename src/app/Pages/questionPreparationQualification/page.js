@@ -21,7 +21,7 @@ export  default function Question1(){
         e.preventDefault();
         // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
         console.log(values);
-        router.push('/questionTeamWork'); // Redireciona para a próxima página
+        router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
     };
 
     const questions = [
