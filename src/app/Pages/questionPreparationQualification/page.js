@@ -7,8 +7,7 @@ import ButtonSubmit from "@/components/Button/Button";
 export  default function Question1(){
     const [values, setValues] = useState({});
     const router = useRouter();
-    console.log(values); 
-
+ 
     const handleRadioChange  = useCallback((item, score, justification) => {
         
         setValues(prevValues => ({
@@ -19,7 +18,6 @@ export  default function Question1(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
         console.log(values);
         router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
     };

@@ -37,7 +37,7 @@ export default function Register(){
     ]
 
     return (
-        <div className="w-3/6  p-10">
+        <div className="w-  p-10">
             <div className="text-start text-xl ">
                 <h2 className="font-bold text-2xl">Cadastro de Funcionário</h2>
             </div>

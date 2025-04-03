@@ -4,8 +4,9 @@
 export default function Home() {
   return (
     <main className="flex h-screen flex-col items-center">
+      <h1 className="font-bold text-2xl">Avaliação de Desempenho</h1>
 
-      <p>
+      <p className="text-center mt-10">
 
           A avaliação de desempenho de funcionários é uma ferramenta essencial nas empresas para medir a eficiência,
           produtividade e alinhamento dos colaboradores com os objetivos organizacionais. Esse processo permite identificar

@@ -8,8 +8,6 @@ export  default function Question5(){
     const router = useRouter();
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
-        console.log(values);
         router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
     }
      
