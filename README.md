@@ -1,3 +1,6 @@
+
+# Estre projeto encontra-se em desenvolvimento 
+
 # Sistema de Avaliação de Desempenho
 
 Este é um sistema de avaliação de desempenho desenvolvido com Next.js. Cada página representa um quesito de avaliação, permitindo que o usuário atribua uma nota e, caso seja a nota máxima, forneça uma justificativa. Os dados podem ser armazenados para posterior análise.
