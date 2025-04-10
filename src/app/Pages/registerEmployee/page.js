@@ -19,7 +19,7 @@ export default function Register(){
     }, []);
 
     const className = {
-        input : "border-2 border-gray-300 rounded outline-none p-1 w-100"
+        input : "border-2 border-gray-300 rounded outline-2px-solid p-1 w-100"
     }
 
     function handleSubmit(){
@@ -39,7 +39,7 @@ export default function Register(){
     return (
         <div className="w-  p-10">
             <div className="text-start text-xl ">
-                <h2 className="font-bold text-2xl">Cadastro de Funcionário</h2>
+                <h2 className="font-bold text-2xl text-center">Cadastro de Funcionário</h2>
             </div>
             <div className="flex flex-col  gap-2   ">
                 <form>

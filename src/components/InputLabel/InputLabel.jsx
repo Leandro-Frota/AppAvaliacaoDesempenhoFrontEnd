@@ -17,6 +17,7 @@ export default function InputLabel({label,
                                     disabledJustify=true,
                                     maxPound,
                                     minPound,
+                                    placeholder,
                                     }){
 
     function captureChange(e){
@@ -53,7 +54,7 @@ export default function InputLabel({label,
                             />
                                 :               
                             <>
-                                <input                      
+                                <input  placeholder={placeholder}                   
                                         type={type}
                                         onChange={captureOnChangeText || captureValuesRegister ? captureText : captureChange}
                                         className={className}

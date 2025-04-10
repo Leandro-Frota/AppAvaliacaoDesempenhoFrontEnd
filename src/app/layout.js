@@ -1,10 +1,11 @@
 'use strict';
-import { Inter } from "next/font/google";
+import { Inter,Roboto } from "next/font/google";
 import "./globals.css";
 import SideMenu from "@/components/SideMenu/SideMenu";
 import Header from "@/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"] , weight: ["400", "700"]});
 
 export const metadata = {
   title: "App Avaliação de Desempenho",
@@ -14,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-row min-h-screen max-w-screen`}>
+      <body className={`${roboto.className} flex flex-row min-h-screen max-w-screen`}>
       <SideMenu/>
         <div className="flex flex-col min-h-screen w-full bg-gray-200">
         <Header/>         

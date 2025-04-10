@@ -50,7 +50,7 @@ export default function Item({
     },[selectedRadio])
 
     return (
-        <div className='flex flex-col  w-full justify-between gap-1 '>                
+        <div className='flex p-5 rounded flex-col  w-full justify-between gap-1  bg-white' >                
             <div className='flex'>
                 <p className="flex gap-2"><span>{item}</span>{title}</p>
             </div>
@@ -101,15 +101,16 @@ export default function Item({
                 </>  }
                 {course &&
                     <>
-                  <div className='flex w-full gap-2  '>            
-                        <InputLabel label="Nome do curso"
+                  <div className='flex w-full gap-2 justify-content-center'>            
+                        <InputLabel label=""
+                                    placeholder="Nome do curso"
                                     type="text"
-                                    className="flex-1 w-full"
+                                    className="flex-1 w-64 border outline-1 rounded-md p-2"
                                     colOrRow = "col"
                                     captureOnChangeText= {setJustification}/>
-                        <InputLabel label={`${value} Pontos`}
+                        <InputLabel label=""
                                     type="checkbox"
-                                    className="flex-1 w-full"
+                                    className="flex-1 rounded p-2 w-20"
                                     colOrRow = "col"
                                     value={value}
                                     captureCheckbox= {setSelectedCheckbox}/>

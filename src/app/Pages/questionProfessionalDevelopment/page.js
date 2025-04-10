@@ -10,6 +10,8 @@ export  default function Question5(){
         e.preventDefault();
         router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
     }
+
+
      
     const questions = [
         {id: 5.1, title: "título do item", description: "Exemplo: Cursos Promovidos pela empresa 80 Horas 4 Pontos"},

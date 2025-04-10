@@ -17,14 +17,18 @@ export  default function Question6(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
         console.log(values);
-        router.push('/'); // Redireciona para a próxima página
+        router.push('/');
     }
 
+    const descriptionItems = {
+        description1: "Realiza o trabalho de forma equilibrada, mantendo a calma em situações de pressão e estresse.",
+        description2: "Trata a todos com presteza, respeito e educação, promovendo um ambiente de trabalho harmonioso.",
+        }
+
     const  questions = [
-        {id: 6.1, title: "Reconhecimento", description: "Elogio : Realiza o trabalho...."},
-        {id: 6.2, title: "Honra ao mérito", description: "Descrição do item"},
+        {id: 6.1, title: "Elogio", description: descriptionItems.description1},
+        {id: 6.2, title: "Honra ao mérito", description: descriptionItems.description2},
     ]
 
     return (

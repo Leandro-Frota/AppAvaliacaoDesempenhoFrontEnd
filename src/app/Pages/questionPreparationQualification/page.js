@@ -22,17 +22,29 @@ export  default function Question1(){
         router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
     };
 
+   const descriptionItem = {
+        description1: "O empregado demonstra conhecimento técnico e habilidades necessárias para desempenhar suas funções de forma eficaz.",
+        description2: "Identifica e analisa problemas de forma lógica e estruturada, propondo soluções adequadas.",
+        description3: "Inova e busca melhorias em processos, produtos ou serviços, contribuindo para a evolução da empresa.",
+        description4: "Busca sistematicamente novos conhecimentos e compartilha com os colegas.",
+        description5: "Organiza seu trabalho de forma eficiente, priorizando tarefas e cumprindo prazos.",
+        description6: "Escuta atentivamente os outros e respeita as opiniões alheias, promovendo um ambiente de trabalho colaborativo.",
+        description7: "Procura evoluir constantemente, buscando feedback e se adaptando a novas situações.",
+    }
+
     const questions = [
-        {id: 1.1, title: "Conhecimento técnico", description: "Descrição do item"},
-        {id: 1.2, title: "Capacidade analítica", description: "Descrição do item"},
-        {id: 1.3, title: "Inovação", description: "Descrição do item"},
-        {id: 1.4, title: "Geração de conhecimento", description: "Descrição do item"},
-        {id: 1.5, title: "Organização", description: "Descrição do item"},
+        {id: 1.1, title: "Conhecimento técnico", description: descriptionItem.description1},
+        {id: 1.2, title: "Capacidade analítica", description: descriptionItem.description2},
+        {id: 1.3, title: "Inovação", description: descriptionItem.description3},
+        {id: 1.4, title: "Geração de conhecimento",description: descriptionItem.description4},
+        {id: 1.5, title: "Organização", description: descriptionItem.description5},
+        {id: 1.6, title: "Comunicação", description: descriptionItem.description6},
+        {id: 1.7, title: "Autodesenvolvimento", description: descriptionItem.description7},
     ]
     
     return (
         <div className='w-full h-full flex flex-col gap-2 p-10'>
-            <h2 className="font-bold text-2xl">Quesito 1 - Prepara e Qualificação </h2>
+            <h2 className="font-bold text-2xl text-center">Quesito 1 - Preparo e Qualificação </h2>
             {questions.map((question) => (
                 <Item
                     key={question.id}
