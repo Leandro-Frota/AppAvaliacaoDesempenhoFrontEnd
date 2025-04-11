@@ -4,11 +4,13 @@ import ButtonSubmit from "@/components/Button/Button";
 import InputLabel from "@/components/InputLabel/InputLabel";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import { registerEmployee } from "@/service/apiService";
+import { CodesandboxLogo } from "@phosphor-icons/react";
 
 export default function Register(){
     const [valuesRegister, setValuesRegister] = useState({});
+    console.log(valuesRegister);
 
-    console.log(valuesRegister)
     const router = useRouter();  
 
     const captureValuesRegister = useCallback((name, value) => {
@@ -22,13 +24,23 @@ export default function Register(){
         input : "border-2 border-gray-300 rounded outline-2px-solid p-1 w-100"
     }
 
-    function handleSubmit(){
-        //logica para enviar os dados para o backend
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(valuesRegister);
+        try {
+            const response = await registerEmployee(valuesRegister);
 
-        console.log("Cadastrado com sucesso")
-        router.push('/Pages/questionPreparationQualification'); // Redireciona para a próxima página
-    }
-
+            const employeeId = response.data.employee._id;
+            localStorage.setItem('employeeId', employeeId);
+            console.log(employeeId)
+            console.log(response.data);
+            router.push('/Pages/questionPreparationQualification');
+        } catch (error) {
+            console.error("Erro ao registrar funcionário:", error);
+            alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
+        }       
+    }    
+    
     const inputs = [
         {id: 1, name: "name", label: "Nome", type: "text"},
         {id: 2, name: "registration", label: "Matrícula", type: "text"},
