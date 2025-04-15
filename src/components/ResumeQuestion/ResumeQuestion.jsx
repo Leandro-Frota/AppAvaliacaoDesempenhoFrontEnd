@@ -1,3 +1,4 @@
+'use client'
 export default function ResumeQuestion({titleResumeQuestion = "title"}){
     return (
         <div className=" w-48 flex flex-col border-2 border-gray-400 rounded p-4 ">

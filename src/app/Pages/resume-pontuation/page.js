@@ -1,3 +1,4 @@
+'use client'
 import Item from "@/components/Item/Item"
 import ResumeQuestion from "@/components/ResumeQuestion/ResumeQuestion"
 

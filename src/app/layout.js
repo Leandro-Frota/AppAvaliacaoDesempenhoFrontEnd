@@ -1,4 +1,5 @@
 'use strict';
+
 import { Inter,Roboto } from "next/font/google";
 import "./globals.css";
 import SideMenu from "@/components/SideMenu/SideMenu";

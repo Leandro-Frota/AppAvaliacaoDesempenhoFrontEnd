@@ -3,6 +3,7 @@ import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react"
 import { useRouter } from "next/navigation";
 import ButtonSubmit from "@/components/Button/Button";
+import { saveStepData } from "@/service/apiService";
 
 export  default function Question1(){
     const [values, setValues] = useState({});
@@ -16,9 +17,31 @@ export  default function Question1(){
         }));
     }, []); 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values);
+        const employeeId = localStorage.getItem('employeeId');
+
+        if(!employeeId) {
+            console.error("Employee ID not found in localStorage.");
+            return;
+        }
+
+        try{
+            const response = await saveStepData(employeeId, "Preparo e Qualificação", values);
+            console.log(response.data);
+        }catch (error) {
+            console.error("Error saving step data:", error);
+            alert("Error saving step data. Please try again later.");
+        }
+        
+        const result = await response.json();
+        console.log(result);
+
+        if(!result.success) {
+            alert("Error saving step data. Please try again later.");
+            return;
+        }
+
         router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
     };
 

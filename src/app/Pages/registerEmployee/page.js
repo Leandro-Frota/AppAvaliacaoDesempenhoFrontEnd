@@ -29,12 +29,21 @@ export default function Register(){
         console.log(valuesRegister);
         try {
             const response = await registerEmployee(valuesRegister);
-
-            const employeeId = response.data.employee._id;
-            localStorage.setItem('employeeId', employeeId);
-            console.log(employeeId)
             console.log(response.data);
-            router.push('/Pages/questionPreparationQualification');
+
+            const employeeId = response?.data?.employee?._id;
+
+            if(employeeId) {
+                localStorage.setItem('employeeId', employeeId);
+                console.log(employeeId)
+                console.log(response.data);
+                alert("Funcionário registrado com sucesso!");
+                router.push('/Pages/questionPreparationQualification');
+                return;
+            }else {
+                alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
+                return;
+            }           
         } catch (error) {
             console.error("Erro ao registrar funcionário:", error);
             alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
@@ -49,11 +58,11 @@ export default function Register(){
     ]
 
     return (
-        <div className="w-  p-10">
-            <div className="text-start text-xl ">
+        <div className="w-full  p-10">
+            <div className="text-start text-xl">
                 <h2 className="font-bold text-2xl text-center">Cadastro de Funcionário</h2>
             </div>
-            <div className="flex flex-col  gap-2   ">
+            <div className="flex flex-col  gap-2">
                 <form>
                     {inputs.map((input) => (
                         <InputLabel
