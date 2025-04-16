@@ -4,10 +4,13 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import Router from "next/router";
 import ButtonSubmit from "@/components/Button/button";
+import { saveStepData } from "@/service/apiService";
 
 export  default function Question2(){
         const [values, setValues] = useState({});
-        const router = useRouter();   
+        const router = useRouter();
+        console.log(values);
+  
        
         const handleRadioChange = useCallback((item, score, justification) => {            
             setValues(prevValues => ({
@@ -16,11 +19,23 @@ export  default function Question2(){
             }));
         }, []);
 
-        const handleSubmit = (e) => {
+        const handleSubmit = async (e) => {
             e.preventDefault();
-            // Aqui você pode fazer algo com os valores, como enviar para um servidor ou processar de alguma forma.
-            console.log(values);
-            router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página
+            const employeeId = localStorage.getItem('employeeId');
+ 
+            if(!employeeId) {
+                console.error("Employee ID not found in localStorage.");
+                return;
+            }
+ 
+            try{
+                const response = await saveStepData(employeeId, "Trabalho em equipe", values);
+                console.log(response.data);
+                router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
+            }catch (error) {
+                console.error("Error saving step data:", error);
+                alert("Error saving step data. Please try again later.");
+            }            
         }
 
         const descriptionItems = { 
@@ -28,8 +43,8 @@ export  default function Question2(){
             description2: "Coopera com os colegas, compartilhando informações e ajudando na resolução de problemas em equipe.",
         }
         const questions = [
-            {id: 2.1, title: "Interação", description: descriptionItems.description1},
-            {id: 2.2, title: "Cooperação", description: descriptionItems.description2},
+            {id: "2_1", title: "Interação", description: descriptionItems.description1},
+            {id: "2_2", title: "Cooperação", description: descriptionItems.description2},
         ]
     
     return (

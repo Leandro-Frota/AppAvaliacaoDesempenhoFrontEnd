@@ -3,6 +3,7 @@ import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import ButtonSubmit from "@/components/Button/button";
+import { saveStepData } from "@/service/apiService";
 
 
 export  default function Question3(){
@@ -16,10 +17,24 @@ export  default function Question3(){
         }));
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values);
-        router.push('/Pages/questionBehavior');    }
+        const employeeId = localStorage.getItem('employeeId');
+   
+        if(!employeeId) {
+            console.error("Employee ID not found in localStorage.");
+            return;
+        }
+
+        try{
+            const response = await saveStepData(employeeId, "Compromisso com resultados", values);
+            console.log(response.data);
+            router.push('/Pages/questionBehavior'); 
+        }catch (error) {
+            console.error("Error saving step data:", error);
+            alert("Error saving step data. Please try again later.");
+        } 
+    }
 
     const descriptionItems = {
         description1: "Concretiza os objetivos e metas estabelecidos, demonstrando comprometimento com os resultados da empresa.",

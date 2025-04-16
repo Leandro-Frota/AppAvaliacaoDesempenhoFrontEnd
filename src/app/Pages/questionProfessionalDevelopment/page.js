@@ -2,13 +2,29 @@
 import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { saveStepData } from "@/service/apiService";
 
 export  default function Question5(){
     const [values, setValues] = useState({});
     const router = useRouter();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
+
+    const handleSubmit = async (e) => {
+            const employeeId = localStorage.getItem('employeeId');
+          
+            if(!employeeId) {
+                console.error("Employee ID not found in localStorage.");
+                return;
+            }
+    
+            try{
+                const response = await saveStepData(employeeId, "Desenvolvimento Profissional", values);
+                console.log(response.data);
+                router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
+            }catch (error) {
+                console.error("Error saving step data:", error);
+                alert("Error saving step data. Please try again later.");
+            } 
+
     }
 
 

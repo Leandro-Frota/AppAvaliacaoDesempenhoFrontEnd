@@ -8,7 +8,6 @@ import { saveStepData } from "@/service/apiService";
 export  default function Question1(){
     const [values, setValues] = useState({});
     const router = useRouter();
-    console.log(values);
  
     const handleRadioChange  = useCallback((item, score, justification) => {
         
@@ -36,15 +35,6 @@ export  default function Question1(){
             alert("Error saving step data. Please try again later.");
         }
         
-        // const result = await response.json();
-        // console.log(result);
-
-        // if(!result.success) {
-        //     alert("Error saving step data. Please try again later.");
-        //     return;
-        // }
-
-
     };
 
    const descriptionItem = {
