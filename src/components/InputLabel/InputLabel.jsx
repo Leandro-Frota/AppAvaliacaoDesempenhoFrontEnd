@@ -4,7 +4,7 @@ export default function InputLabel({label,
                                     type,
                                     className = "",
                                     colOrRow = "col",
-                                    textareaid = false,
+                                    isTextarea = false,
                                     colInput,
                                     rowInput,
                                     name,
@@ -43,7 +43,7 @@ export default function InputLabel({label,
     return (
                 <div className= {`flex flex-${colOrRow} gap-1`}>
                     <label  >{label}</label>
-                    { textareaid ?
+                    { isTextarea ?
                             <textarea
                                         className={className}
                                         placeholder="Digite aqui sua justifcativa"
@@ -52,7 +52,7 @@ export default function InputLabel({label,
                                         disabled= {disabledJustify}
                                         onChange={captureText}
                             />
-                                :               
+                                :                  
                             <>
                                 <input  placeholder={placeholder}                   
                                         type={type}

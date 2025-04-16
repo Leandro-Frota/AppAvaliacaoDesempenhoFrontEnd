@@ -10,8 +10,8 @@ const api = axios.create({
 export const getEmployees =  () => {api.get("/employees")}
 export const registerEmployee = async (data) => { return api.post("/employees", data)}
 
-export const saveStepData = async (eployeeId,step,data) => {
-    return api.post(`/employees/${eployeeId}/steps/${step}`, data)
+export const saveStepData = async (employeeId,step,data) => {
+    return api.put(`/employees/${employeeId}/steps/${step}`, data)
 }
 export const getStepsData = async (employeeId, step) => {
     return api.get(`/employees/${employeeId}/step/${step}`)

@@ -90,13 +90,13 @@ export default function Item({
                     </div>
                     <div className="w-full mt-4">
                         <InputLabel label="Jutificativa"
-                                    textareaid = {true}
+                                    isTextarea = {true}
                                     className="outline-0 rounded-md p-2"
                                     colOrRow = "col"
                                     rowInput = "4"
                                     colInput="40"
                                     disabledJustify={enableJustify}
-                                    captureOnChangeText={(e)=>setJustification(e.target.value)}/>
+                                    captureOnChangeText={setJustification}/>
                     </div>
                 </>  }
                 {course &&

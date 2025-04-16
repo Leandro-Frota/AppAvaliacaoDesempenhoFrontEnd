@@ -8,6 +8,7 @@ import { saveStepData } from "@/service/apiService";
 export  default function Question1(){
     const [values, setValues] = useState({});
     const router = useRouter();
+    console.log(values);
  
     const handleRadioChange  = useCallback((item, score, justification) => {
         
@@ -29,20 +30,21 @@ export  default function Question1(){
         try{
             const response = await saveStepData(employeeId, "Preparo e Qualificação", values);
             console.log(response.data);
+            router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Error saving step data. Please try again later.");
         }
         
-        const result = await response.json();
-        console.log(result);
+        // const result = await response.json();
+        // console.log(result);
 
-        if(!result.success) {
-            alert("Error saving step data. Please try again later.");
-            return;
-        }
+        // if(!result.success) {
+        //     alert("Error saving step data. Please try again later.");
+        //     return;
+        // }
 
-        router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
+
     };
 
    const descriptionItem = {
@@ -56,13 +58,13 @@ export  default function Question1(){
     }
 
     const questions = [
-        {id: 1.1, title: "Conhecimento técnico", description: descriptionItem.description1},
-        {id: 1.2, title: "Capacidade analítica", description: descriptionItem.description2},
-        {id: 1.3, title: "Inovação", description: descriptionItem.description3},
-        {id: 1.4, title: "Geração de conhecimento",description: descriptionItem.description4},
-        {id: 1.5, title: "Organização", description: descriptionItem.description5},
-        {id: 1.6, title: "Comunicação", description: descriptionItem.description6},
-        {id: 1.7, title: "Autodesenvolvimento", description: descriptionItem.description7},
+        {id: "1_1", title: "Conhecimento técnico", description: descriptionItem.description1},
+        {id: "1_2", title: "Capacidade analítica", description: descriptionItem.description2},
+        {id: "1_3", title: "Inovação", description: descriptionItem.description3},
+        {id: "1_4", title: "Geração de conhecimento",description: descriptionItem.description4},
+        {id: "1_5", title: "Organização", description: descriptionItem.description5},
+        {id: "1_6", title: "Comunicação", description: descriptionItem.description6},
+        {id: "1_7", title: "Autodesenvolvimento", description: descriptionItem.description7},
     ]
     
     return (
