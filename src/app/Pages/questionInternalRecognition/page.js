@@ -3,6 +3,7 @@ import ButtonSubmit from "@/components/Button/button";
 import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { saveStepData } from "@/service/apiService";
 
 export  default function Question6(){
     const [values, setValues] = useState({});
@@ -15,10 +16,25 @@ export  default function Question6(){
         }));
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values);
-        router.push('/');
+        const employeeId = localStorage.getItem('employeeId');
+
+        if(!employeeId) {
+            console.error("Employee ID not found in localStorage.");
+            return;
+        }
+
+        try{
+            const response = await saveStepData(employeeId, "Internal Recognition", values);
+            console.log(response.data);
+            router.push('/');
+            local
+        }catch (error) {
+            console.error("Error saving step data:", error);
+            alert("Error saving step data. Please try again later.");
+        }
+   
     }
 
     const descriptionItems = {

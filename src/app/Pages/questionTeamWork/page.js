@@ -29,7 +29,7 @@ export  default function Question2(){
             }
  
             try{
-                const response = await saveStepData(employeeId, "Trabalho em equipe", values);
+                const response = await saveStepData(employeeId, "Team Work", values);
                 console.log(response.data);
                 router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
             }catch (error) {
@@ -43,8 +43,8 @@ export  default function Question2(){
             description2: "Coopera com os colegas, compartilhando informações e ajudando na resolução de problemas em equipe.",
         }
         const questions = [
-            {id: "2_1", title: "Interação", description: descriptionItems.description1},
-            {id: "2_2", title: "Cooperação", description: descriptionItems.description2},
+            {id: 2.1, title: "Interação", description: descriptionItems.description1},
+            {id: 2.2, title: "Cooperação", description: descriptionItems.description2},
         ]
     
     return (

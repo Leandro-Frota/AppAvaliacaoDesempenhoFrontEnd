@@ -25,7 +25,7 @@ export  default function Question4(){
         }
 
         try{
-            const response = await saveStepData(employeeId, "Comportamento", values);
+            const response = await saveStepData(employeeId, "Behavior", values);
             console.log(response.data);
             router.push('/Pages/questionProfessionalDevelopment'); 
         }catch (error) {
