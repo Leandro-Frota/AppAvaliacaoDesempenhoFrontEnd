@@ -16,3 +16,7 @@ export const saveStepData = async (employeeId,step,data) => {
 export const getStepsData = async (employeeId, step) => {
     return api.get(`/employees/${employeeId}/step/${step}`)
 }
+
+export const getEmployeeById = async (employeeId) => {
+    return api.get(`/employees/${employeeId}`)
+}

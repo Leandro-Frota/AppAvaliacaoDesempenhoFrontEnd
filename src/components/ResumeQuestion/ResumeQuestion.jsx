@@ -1,16 +1,45 @@
 'use client'
+
 export default function ResumeQuestion({titleResumeQuestion = "title"}){
+    //modelo de dados para o funcionário
+    const employeeID = {
+        _id: '67ffba3bc06ce20753a7d12c',
+        name:"Vojvoda",
+        management:"GESOP",
+        office:"ASO",
+        registration:"456",        
+        steps:{PreparationandQualificacion:{
+            1.1: {
+                description: "O empregado demonstra conhecimento técnico e habilidades necessárias para desempenhar suas funções de forma eficaz.",
+                score:"10",
+                justification:"ok"
+            },
+            1.2: {
+                score:"10",
+                justification:"ok"
+            }
+        },
+    }
+    }
     return (
-        <div className=" w-48 flex flex-col border-2 border-gray-400 rounded p-4 ">
-                        <h2 className="text-center">{titleResumeQuestion}</h2>
-                        <div>
-                            <p><span>1.1</span><span></span></p>     
-                            <p><span>1.2</span><span></span></p>
-                            <p><span>1.3</span><span></span></p>  
-                            <p><span>1.4</span><span></span></p>  
-                            <p><span>1.5</span><span></span></p>
-                            <>Total: <span>100</span></>
-                        </div>
-                    </div>
-    )
+        <div className=" w-full flex flex-col border-2 bg-slate-50 border-gray-400 rounded p-4 ">
+            <h2 className="text-center">{titleResumeQuestion}</h2>
+            <div>
+                <div>
+                    <p>Empregado:{employeeID.name}</p>
+                    <p>Gestão:{employeeID.management}</p>
+                    <p>Função:{employeeID.office}</p>
+                    <p>Matrícula:{employeeID.registration}</p>
+                    <p>Item:{employeeID.steps.PreparationandQualificacion["1.1"].description}</p>
+                    <p>Nota:{employeeID.steps.PreparationandQualificacion["1.1"].score}</p>
+                    <p>Justificativa:{employeeID.steps.PreparationandQualificacion["1.1"].justification}</p>
+                    <div>Contestação</div>
+                    <p>Item:{employeeID.steps.PreparationandQualificacion["1.2"].description}</p>
+                    <p>Nota:{employeeID.steps.PreparationandQualificacion["1.2"].score}</p>
+                    <p>Justificativa:{employeeID.steps.PreparationandQualificacion["1.2"].justification}</p>
+                    <div>Contestação</div>
+                </div>
+            </div>
+        </div>
+)
 }

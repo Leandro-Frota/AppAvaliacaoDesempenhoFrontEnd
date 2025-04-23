@@ -51,6 +51,7 @@ export default function InputLabel({label,
                                         rows = {rowInput}
                                         disabled= {disabledJustify}
                                         onChange={captureText}
+                                        required
                             />
                                 :                  
                             <>
