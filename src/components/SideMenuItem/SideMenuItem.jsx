@@ -1,7 +1,8 @@
 'use client'
 import { useRouter } from "next/navigation"
 
-export default function SideMenuItem({title,path}){
+
+export default function SideMenuItem({title,path,Icon}){
    const router = useRouter();
 
    function goToPath(){
@@ -13,7 +14,8 @@ export default function SideMenuItem({title,path}){
     return (
          <div
             onClick={goToPath}
-            className="cursor-pointer min-w-full p-2 bg-gray-700 max-h-10 text-white rounded text-sm text-center" >
+            className="flex cursor-pointer min-w-full p-2 hover:bg-blue-900 max-h-10 text-white rounded text-sm" >
+           {Icon && <Icon size={20} className="mr-2"/>}
             {title}
          </div>   
 )}
