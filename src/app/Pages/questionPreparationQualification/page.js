@@ -9,11 +9,11 @@ export  default function Question1(){
     const [values, setValues] = useState({});
     const router = useRouter();
  
-    const handleRadioChange  = useCallback((item, score, justification) => {
+    const handleRadioChange  = useCallback((item, score, justification, description) => {
         
         setValues(prevValues => ({
             ...prevValues,
-            [item]: { score, justification }
+            [item]: { description, score, justification }
         }));
     }, []); 
 
@@ -32,9 +32,8 @@ export  default function Question1(){
             router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
         }catch (error) {
             console.error("Error saving step data:", error);
-            alert("Error saving step data. Please try again later.");
-        }
-        
+            alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
+        }        
     };
 
    const descriptionItem = {

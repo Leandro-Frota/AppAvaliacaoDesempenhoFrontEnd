@@ -32,7 +32,7 @@ export  default function Question3(){
             router.push('/Pages/questionBehavior'); 
         }catch (error) {
             console.error("Error saving step data:", error);
-            alert("Error saving step data. Please try again later.");
+            alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
         } 
     }
 

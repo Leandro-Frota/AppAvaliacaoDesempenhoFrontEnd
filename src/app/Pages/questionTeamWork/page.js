@@ -9,8 +9,6 @@ import { saveStepData } from "@/service/apiService";
 export  default function Question2(){
         const [values, setValues] = useState({});
         const router = useRouter();
-        console.log(values);
-  
        
         const handleRadioChange = useCallback((item, score, justification) => {            
             setValues(prevValues => ({
@@ -34,7 +32,7 @@ export  default function Question2(){
                 router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);
-                alert("Error saving step data. Please try again later.");
+                alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
             }            
         }
 

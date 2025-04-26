@@ -23,7 +23,7 @@ export  default function Question5(){
                 router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);
-                alert("Error saving step data. Please try again later.");
+                alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
             } 
 
     }

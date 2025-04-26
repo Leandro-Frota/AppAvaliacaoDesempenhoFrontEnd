@@ -19,11 +19,15 @@ export default function Item({
         const [selectedCheckbox, setSelectedCheckbox] = useState(0)
         const [selectedNumber, setSelectedNumber] = useState(0)
         const[justification,setJustification] = useState("")
+        const [descriptionItem, setDescriptionItem] = useState("")  
         const [enableJustify, setEnableJustify] = useState(true)
+
+        console.log(descriptionItem , "descriptionItem")
 
       useEffect(()=>{
         if(selectedRadio && handleRadioChange){
-            handleRadioChange(item,selectedRadio,justification)
+            setDescriptionItem(description)
+            handleRadioChange(item,selectedRadio,justification,descriptionItem)
         }
 
         if(selectedCheckbox && handleCheckBoxChange){
@@ -34,7 +38,7 @@ export default function Item({
             handleNumberChange(item,selectedNumber)
         }
     
-    },[selectedRadio,selectedCheckbox,selectedNumber,justification,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
+    },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
 
     
 // habilitar ou desabilitar a justificativa
