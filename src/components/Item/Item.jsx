@@ -38,7 +38,7 @@ export default function Item({
             handleNumberChange(item,selectedNumber)
         }
     
-    },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
+    },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,description,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
 
     
 // habilitar ou desabilitar a justificativa

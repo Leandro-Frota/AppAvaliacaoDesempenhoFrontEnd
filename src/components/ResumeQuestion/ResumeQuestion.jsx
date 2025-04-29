@@ -13,7 +13,6 @@
             "Professional Development": "Desenvolvimento Profissional",
             "Team Work": "Trabalho em Equipe"
         };
-
         return (
             <div className=" w-full flex flex-col border-2 bg-slate-50 border-gray-400 rounded p-4 ">
                 <div>
@@ -24,8 +23,10 @@
                                 <div key={itemKey} className="flex flex-col gap-1 border border-gray-600 p-2">
                                     <p><strong>Item:</strong>{itemKey}</p>
                                     <p><strong>Descrição: </strong>{item.description}</p>
-                                    <p><strong>Pontos: </strong>{item.score}</p>
-                                    <p><strong>Justificativa:</strong>{item.justification}</p>
+                                    <p><strong>Pontos: </strong>{item.score}</p>                                    
+                                    {!["Professional Development", "Internal Recognition"].includes(sectionName) &&
+                                        <p><strong>Justificativa:</strong> {item.justification}</p>}
+                                                                        
                                 </div>
                             ))}
                         </div>  
