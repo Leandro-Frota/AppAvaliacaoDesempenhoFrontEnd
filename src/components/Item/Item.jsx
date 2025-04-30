@@ -31,17 +31,18 @@ export default function Item({
         }
 
         if(selectedCheckbox && handleCheckBoxChange){
-            handleCheckBoxChange(item,selectedCheckbox,justification)
+            setDescriptionItem(description)
+            handleCheckBoxChange(item,selectedCheckbox,justification, descriptionItem)
         }
 
         if(selectedNumber && handleNumberChange){
-            handleNumberChange(item,selectedNumber)
+            setDescriptionItem(description)
+            handleNumberChange(item,selectedNumber, descriptionItem)
         }
     
     },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,description,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
 
     
-// habilitar ou desabilitar a justificativa
     useEffect(()=>{
 
         if(selectedRadio==="7"){

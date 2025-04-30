@@ -9,8 +9,7 @@ export  default function Question1(){
     const [values, setValues] = useState({});
     const router = useRouter();
  
-    const handleRadioChange  = useCallback((item, score, justification, description) => {
-        
+    const handleRadioChange  = useCallback((item, score, justification, description) => {        
         setValues(prevValues => ({
             ...prevValues,
             [item]: { description, score, justification }

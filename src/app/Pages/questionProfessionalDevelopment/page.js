@@ -31,21 +31,21 @@ export  default function Question5(){
 
      
     const questions = [
-        {id: 5.1, title: "título do item", description: "Exemplo: Cursos Promovidos pela empresa 80 Horas 4 Pontos", value: 4},
-        {id: 5.2, title: "título do item", description: "Exemplo: Cursos Promovidos pela empresa 40 Horas 3 Pontos", value: 3},
-        {id: 5.3, title: "título do item", description: "Exemplo: Cursos técnicos 80 Horas 5 Pontos", value: 5},
-        {id: 5.4, title: "título do item", description: "Exemplo: Cursos Gestão pública 20 Horas 1 Ponto", value: 1},
-        {id: 5.5, title: "título do item", description: "Exemplo: Doutorado 10 Pontos", value: 10},
-        {id: 5.6, title: "título do item", description: "Exemplo: Mestrado 9 Pontos",value: 9},
-        {id: 5.7, title: "título do item", description: "Exemplo: Pós-graduação 8 Pontos",value: 8},
-        {id: 5.8, title: "título do item", description: "Exemplo: Graduação 7 Pontos",value: 7},
+        {id: 5.1, title: "título do item", description: "Cursos Promovidos pela empresa 80 Horas 4 Pontos", value: 4},
+        {id: 5.2, title: "título do item", description: "Cursos Promovidos pela empresa 40 Horas 3 Pontos", value: 3},
+        {id: 5.3, title: "título do item", description: "Cursos técnicos 80 Horas 5 Pontos", value: 5},
+        {id: 5.4, title: "título do item", description: "Cursos Gestão pública 20 Horas 1 Ponto", value: 1},
+        {id: 5.5, title: "título do item", description: "Doutorado 10 Pontos", value: 10},
+        {id: 5.6, title: "título do item", description: "Mestrado 9 Pontos",value: 9},
+        {id: 5.7, title: "título do item", description: "Pós-graduação 8 Pontos",value: 8},
+        {id: 5.8, title: "título do item", description: "Graduação 7 Pontos",value: 7},
     ]
 
-    const handleCheckBoxChange = useCallback((item, score, nameCourse) => {
+    const handleCheckBoxChange = useCallback((item, score, nameCourse, description) => {
         setValues(prevValues => {
             const newValues = {
                 ...prevValues,
-                [item]: { score, nameCourse }  
+                [item]: {description, score, nameCourse }  
             };    
             //ordenar os valores do objeto
             const sortedEntries = Object.entries(newValues)

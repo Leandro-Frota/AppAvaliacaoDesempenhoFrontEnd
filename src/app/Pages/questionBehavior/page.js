@@ -8,10 +8,10 @@ import { saveStepData } from "@/service/apiService";
 export  default function Question4(){
     const [values, setValues] = useState({});
     const router = useRouter();
-    const handleRadioChange = useCallback((item, score, justification) => {        
+    const handleRadioChange = useCallback((item, score, justification, description) => {        
         setValues(prevValues => ({
             ...prevValues,
-            [item]: { score, justification }
+            [item]: {description, score, justification }
         }));
     }, []);
 

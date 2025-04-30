@@ -1,5 +1,4 @@
 'use client'
-import Item from "@/components/Item/Item"
 import ResumeQuestion from "@/components/ResumeQuestion/ResumeQuestion"
 import { getEmployees } from "@/service/apiService"
 import { useState,useEffect} from "react";
