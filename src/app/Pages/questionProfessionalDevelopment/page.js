@@ -67,13 +67,14 @@ export  default function Question5(){
                     key={question.id}
                     item={question.id}
                     nameRadio={question.id}
-                    title={question.title}
+                    // title={question.title}
                     description={question.description}
                     person={false}
                     recognition = {false}
                     course
                     value={question.value}
                     handleCheckBoxChange={handleCheckBoxChange}
+                    
                 />
             ))}    
             <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleSubmit}>Avançar</button>                               

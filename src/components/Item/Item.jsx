@@ -110,12 +110,13 @@ export default function Item({
                         <InputLabel label=""
                                     placeholder="Nome do curso"
                                     type="text"
-                                    className="flex-1 w-64 border outline-1 rounded-md p-2"
+                                    className="border outline-1 p-1 rounded-md"
+                                    size={70}
                                     colOrRow = "col"
                                     captureOnChangeText= {setJustification}/>
                         <InputLabel label=""
                                     type="checkbox"
-                                    className="flex-1 rounded p-2 w-20"
+                                    className="flex-1 rounded w-5 "
                                     colOrRow = "col"
                                     value={value}
                                     captureCheckbox= {setSelectedCheckbox}/>
