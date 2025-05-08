@@ -9,6 +9,7 @@ export  default function ResumePontuation(){
 
     const [values, setValues] = useState();
     const [employeeFilter, setEmployeeFilter] = useState([]);
+    console.log('employeeFilter', employeeFilter);
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -28,7 +29,7 @@ export  default function ResumePontuation(){
         <div className='w-full h-full flex flex-col gap-2 p-10'>
             <h1 className="font-bold text-2xl">Resumo da Avaliação</h1>
             <SearchEmployee listValuesEmployee={values} setEmployeeFilter={setEmployeeFilter}/>                      
-                {employeeFilter.map((employee) => (
+                {/* {employeeFilter.map((employee) => (
                     <div key={employee.id} className="flex flex-col gap-2 border-b-2 border-gray-300 p-2">
                         <h2 className="font-bold text-xl">{employee.name}</h2>
                         <div className="flex flex-row gap-4">
@@ -38,7 +39,8 @@ export  default function ResumePontuation(){
                         </div>
                         <ResumeQuestion key={employee.id} employee={employee}/>                    
                     </div>                    
-                ))}                     
+                ))} */}
+                <ResumeQuestion  employee={employeeFilter}/>                   
                                         
         </div>
     )

@@ -43,6 +43,8 @@ export default function Dashboard() {
 
     return(
         <div className='w-full h-full flex flex-col gap-2 p-10'>
+            <h1 className="font-bold text-2xl">Funcionários Cadastrados</h1>
+            <p className="text-start mt-4">Aqui estão os funcionários cadastrados no sistema. Você pode editar ou deletar os registros conforme necessário.</p>
                 <table className="w-full mt-4 border-collapse border border-gray-300">
                     <thead className="bg-gray-200 p-2">
                         <tr className="border border-gray-300">
