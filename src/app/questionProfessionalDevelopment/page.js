@@ -20,7 +20,7 @@ export  default function Question5(){
             try{
                 const response = await saveStepData(employeeId, "Professional Development", values);
                 console.log(response.data);
-                router.push('/Pages/questionInternalRecognition'); // Redireciona para a próxima página
+                router.push('/questionInternalRecognition'); // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);
                 alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");

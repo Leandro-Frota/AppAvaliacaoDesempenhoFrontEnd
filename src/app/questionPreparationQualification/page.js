@@ -28,7 +28,7 @@ export  default function Question1(){
         try{
             const response = await saveStepData(employeeId, "Preparation and Qualificacion", values);
             console.log(response.data);
-            router.push('/Pages/questionTeamWork'); // Redireciona para a próxima página
+            router.push('/questionTeamWork'); // Redireciona para a próxima página
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");

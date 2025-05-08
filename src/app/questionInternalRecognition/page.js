@@ -28,8 +28,8 @@ export  default function Question6(){
         try{
             const response = await saveStepData(employeeId, "Internal Recognition", values);
             console.log(response.data);
-            router.push('/');
-            local
+            router.push('/introduction'); // Redireciona para a próxima página
+            alert("Dados salvos com sucesso!");
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");

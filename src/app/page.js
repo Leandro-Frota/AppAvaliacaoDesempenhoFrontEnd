@@ -1,54 +1,66 @@
 "use client"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 
 export default function Home() {
-  return (
-    <main className="flex h-screen flex-col items-center">
-      
-
-      <h1 className="font-bold text-9x1">Avaliação de Desempenho de Funcionários</h1>
-
-      <p className="text-center mt-4 ">
-        A avaliação de desempenho de funcionários é uma ferramenta essencial nas empresas para medir a eficiência,
-        produtividade e alinhamento dos colaboradores com os objetivos organizacionais. Esse processo permite
-        identificar pontos fortes, áreas de melhoria e definir planos de desenvolvimento personalizados.
-      </p>
-
-      <p className="text-center mt-4    ">
-        Na metodologia descrita, cada quesito avaliado recebe uma pontuação específica:
-      </p>
-
-      <table className="w-1/2 mt-4 border-collapse border border-gray-300">
-        <thead className="bg-gray-200 p-2">
-          <tr className="border border-gray-300">
-            <th className="border border-gray-300 p-2">Quesito</th>
-            <th className="border border-gray-300 p-2">Descrição</th>
-            <th className="border border-gray-300 p-2">Pontuação</th>
-          </tr>
-        </thead >
-        <tbody className="bg-white p-2">
-          <tr className="border border-gray-300 text-center">
-            <td className="border border-gray-300">A</td>
-            <td className="border border-gray-300">Desempenho excelente</td>
-            <td className="border border-gray-300">7 pontos</td>
-          </tr>
-          <tr className="border border-gray-300 text-center">
-            <td className="border border-gray-300">B</td>
-            <td className="border border-gray-300">Desempenho acima do esperado</td>
-            <td className="border border-gray-300">6 pontos</td>
-          </tr>            
-          <tr className="border border-gray-300 text-center">
-            <td className="border border-gray-300">C</td>
-            <td className="border border-gray-300">Desempenho abaixo do esperado</td>
-            <td className="border border-gray-300">1 ponto</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p className="text-center mt-4">
-        Essas pontuações permitem quantificar o desempenho de cada funcionário de forma clara e objetiva.
-      </p>    
-
-    </main>
-  );
+    const [email, setEmail] = useState('');
+   const [senha, setSenha] = useState('');
+   const [erro, setErro] = useState('');
+   const router = useRouter();
+ 
+   const handleLogin = async (e) => {
+     e.preventDefault();
+ 
+     // Simulação de login (substituir por chamada real à API)
+     if (email === 'admin@email.com' && senha === '123456') {
+       router.push('/introducion'); // Redireciona após login
+     } else {
+       setErro('Credenciais inválidas');
+     }
+   };
+ 
+   return (
+     <div className="flex items-center justify-center min-w-full min-h-screen  bg-gray-100">
+       <form
+         onSubmit={handleLogin}
+         className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm"
+       >
+         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+ 
+         {erro && (
+           <p className="text-red-600 text-sm mb-4 text-center">{erro}</p>
+         )}
+ 
+         <label className="block mb-2 text-sm font-medium text-gray-700">
+           Email
+         </label>
+         <input
+           type="email"
+           value={email}
+           onChange={(e) => setEmail(e.target.value)}
+           className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+           required
+         />
+ 
+         <label className="block mb-2 text-sm font-medium text-gray-700">
+           Senha
+         </label>
+         <input
+           type="password"
+           value={senha}
+           onChange={(e) => setSenha(e.target.value)}
+           className="w-full p-2 border border-gray-300 rounded-lg mb-6"
+           required
+         />
+ 
+         <button
+           type="submit"
+           className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
+         >
+           Entrar
+         </button>
+       </form>
+     </div>
+   );
 }

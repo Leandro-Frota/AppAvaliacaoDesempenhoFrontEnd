@@ -29,7 +29,7 @@ export  default function Question2(){
             try{
                 const response = await saveStepData(employeeId, "Team Work", values);
                 console.log(response.data);
-                router.push('/Pages/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
+                router.push('/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);
                 alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");

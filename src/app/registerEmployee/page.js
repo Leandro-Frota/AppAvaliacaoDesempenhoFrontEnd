@@ -38,7 +38,7 @@ export default function Register(){
                 console.log(employeeId)
                 console.log(response.data);
                 alert("Funcionário registrado com sucesso!");
-                router.push('/Pages/questionPreparationQualification');
+                router.push('/questionPreparationQualification');
                 return;
             }else {
                 alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
