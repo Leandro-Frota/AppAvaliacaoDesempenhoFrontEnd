@@ -3,10 +3,9 @@
     export default function ResumeQuestion({employee}){
 
         const person = Array.isArray(employee) ? employee[0] : employee;
-   
-
+        console.log('person', person);
         if(!person){
-            return <p className="text-red-600">Dados do funcionário não encontrado.</p>
+            return console.log('Nenhum funcionário encontrado');
         }
 
         const sections = person.steps || {};

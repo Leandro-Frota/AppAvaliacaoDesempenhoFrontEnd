@@ -19,7 +19,7 @@ export  default function ResumePontuation(){
                 setValues(response.data);
             }catch (error) {
                 console.error("Error fetching employees:", error);
-                alert("Erro ao buscar funcionários. Tente novamente mais tarde.");
+                // alert("Erro ao buscar funcionários. Tente novamente mais tarde.");
             }
         };
         fetchEmployees();
@@ -29,18 +29,7 @@ export  default function ResumePontuation(){
         <div className='w-full h-full flex flex-col gap-2 p-10'>
             <h1 className="font-bold text-2xl">Resumo da Avaliação</h1>
             <SearchEmployee listValuesEmployee={values} setEmployeeFilter={setEmployeeFilter}/>                      
-                {/* {employeeFilter.map((employee) => (
-                    <div key={employee.id} className="flex flex-col gap-2 border-b-2 border-gray-300 p-2">
-                        <h2 className="font-bold text-xl">{employee.name}</h2>
-                        <div className="flex flex-row gap-4">
-                            <p className="text-gray-600">Cargo: {employee.office}</p>
-                            <p className="text-gray-600">Matrícula: {employee.registration}</p>
-                            <p className="text-gray-600">Gerência: {employee.management}</p>
-                        </div>
-                        <ResumeQuestion key={employee.id} employee={employee}/>                    
-                    </div>                    
-                ))} */}
-                <ResumeQuestion  employee={employeeFilter}/>                   
+            <ResumeQuestion  employee={employeeFilter}/>              
                                         
         </div>
     )

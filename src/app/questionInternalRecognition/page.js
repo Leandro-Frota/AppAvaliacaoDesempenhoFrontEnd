@@ -9,10 +9,10 @@ export  default function Question6(){
     const [values, setValues] = useState({});
     const router = useRouter();
 
-    const handleNumberChange = useCallback((item, value, description) => {
+    const handleNumberChange = useCallback((item, score, description) => {
         setValues(prevValues => ({
             ...prevValues,
-            [item]: {description, value }
+            [item]: {description, score }
         }));
     }, []);
 

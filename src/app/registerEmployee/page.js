@@ -9,7 +9,6 @@ import { CodesandboxLogo } from "@phosphor-icons/react";
 
 export default function Register(){
     const [valuesRegister, setValuesRegister] = useState({});
-    console.log(valuesRegister);
 
     const router = useRouter();  
 
@@ -26,17 +25,13 @@ export default function Register(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(valuesRegister);
         try {
             const response = await registerEmployee(valuesRegister);
-            console.log(response.data);
 
             const employeeId = response?.data?.employee?._id;
 
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
-                console.log(employeeId)
-                console.log(response.data);
                 alert("Funcionário registrado com sucesso!");
                 router.push('/questionPreparationQualification');
                 return;
@@ -72,6 +67,7 @@ export default function Register(){
                             type={input.type}
                             className={className.input}
                             captureValuesRegister={captureValuesRegister}
+                            size={64}
                         />
                     ))} 
                     

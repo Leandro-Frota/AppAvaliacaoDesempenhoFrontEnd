@@ -6,6 +6,7 @@ import InputLabel from "../InputLabel/InputLabel";
 
 export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
         const [employeeSearch, setEmployeeSearch] = useState('');
+        console.log('emploueeSeacrh',employeeSearch)
 
         const handleFilterChange = (value) => {
             setEmployeeSearch(value);
@@ -41,6 +42,11 @@ export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
             <button className="bg-blue-500 text-white rounded px-2 py-1 mt-1"
                     type="submit">
                     <MagnifyingGlass size={16} color="#faf5f5" />
+            </button>
+            <button className="bg-red-500 text-white rounded px-2 py-1 mt-1"
+                    type="button"
+                    onClick={() => setEmployeeFilter([])}>
+                    Limpar
             </button>
             </form>
     )}
