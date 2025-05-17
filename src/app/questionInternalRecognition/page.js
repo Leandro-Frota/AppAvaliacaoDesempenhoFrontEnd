@@ -27,7 +27,6 @@ export  default function Question6(){
 
         try{
             const response = await saveStepData(employeeId, "Internal Recognition", values);
-            console.log(response.data);
             router.push('/introduction'); // Redireciona para a próxima página
             alert("Dados salvos com sucesso!");
         }catch (error) {
@@ -38,8 +37,8 @@ export  default function Question6(){
     }
 
     const descriptionItems = {
-        description1: "Realiza o trabalho de forma equilibrada, mantendo a calma em situações de pressão e estresse.",
-        description2: "Trata a todos com presteza, respeito e educação, promovendo um ambiente de trabalho harmonioso.",
+        description1: "Realiza o trabalho de forma equilibrada, mantendo a calma em situações de pressão e estresse. Cada elogia registra um ponto positivo.",
+        description2: "Trata a todos com presteza, respeito e educação, promovendo um ambiente de trabalho harmonioso. Cada elogio registra um ponto positivo.",
         }
 
     const  questions = [

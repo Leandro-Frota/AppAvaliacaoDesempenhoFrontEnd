@@ -5,7 +5,7 @@ import InputLabel from "@/components/InputLabel/InputLabel";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerEmployee } from "@/service/apiService";
-import { CodesandboxLogo } from "@phosphor-icons/react";
+
 
 export default function Register(){
     const [valuesRegister, setValuesRegister] = useState({});

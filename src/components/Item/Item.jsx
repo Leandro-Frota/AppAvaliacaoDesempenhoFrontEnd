@@ -130,7 +130,7 @@ export default function Item({
                                         type="number"
                                         minPound="0"
                                         maxPound="10"
-                                        className="flex-1 w-full"
+                                        className="flex-1 w-full border outline-1 p-1 rounded-md"
                                         colOrRow = "col"
                                         captureCheckNumber={setSelectedNumber}/>
                         </div>
