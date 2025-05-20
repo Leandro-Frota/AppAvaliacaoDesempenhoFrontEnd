@@ -27,7 +27,7 @@ export  default function ResumePontuation(){
 
     return (
         <div className='w-full h-full flex flex-col gap-2 p-10'>
-            <h1 className="font-bold text-2xl">Resumo da Avaliação</h1>
+            <h1 className="font-bold text-2xl">Resumo da Avaliação por Funcionário</h1>
             <SearchEmployee listValuesEmployee={values} setEmployeeFilter={setEmployeeFilter}/>                      
             <ResumeQuestion  employee={employeeFilter}/>              
                                         
