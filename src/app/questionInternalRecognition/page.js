@@ -1,10 +1,11 @@
 'use client'
-import ButtonSubmit from "@/components/Button/button";
 import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
+import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
+
 
 export  default function Question6(){
     const [values, setValues] = useState({});
@@ -71,7 +72,7 @@ export  default function Question6(){
                     handleNumberChange={handleNumberChange}
                 />
             ))}
-            <ButtonSubmit onClick={handleSubmit} text="Concluir"/>
+            <ButtonSubmit type='submit' text="Concluir" onClick={handleSubmit} disabele={isLoading}/>
         </div>
     )
 }

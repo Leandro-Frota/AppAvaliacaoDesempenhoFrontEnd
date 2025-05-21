@@ -1,6 +1,6 @@
 
 'use client'
-import ButtonSubmit from "@/components/Button/Button";
+import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import InputLabel from "@/components/InputLabel/InputLabel";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -60,14 +60,15 @@ export default function Register(){
     return (
         <div className="w-full  p-10">
             {isloading && 
-              <ModalIsLoading isloading={isloading} message="Regsitrando"/>
+              <ModalIsLoading isloading={isloading} message="Regsitrando dados"/>
             }
             
             <div className="text-start text-xl">
                 <h2 className="font-bold text-2xl text-center">Cadastro de Funcionário</h2>
             </div>
             <div className="flex flex-col  gap-2">
-                <form>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-2 mt-5">
+                    <p className="text-sm text-gray-500">Preencha os dados abaixo para cadastrar o funcionário.</p>
                     {inputs.map((input) => (
                         <InputLabel
                             key={input.id}
@@ -77,10 +78,11 @@ export default function Register(){
                             className={className.input}
                             captureValuesRegister={captureValuesRegister}
                             size={64}
+                            required={true}
                         />
                     ))} 
                     
-                    <ButtonSubmit  text="Avançar" onClick={handleSubmit} disabled={isloading}/>
+                    <ButtonSubmit  text="Avançar" type="submit" disabled={isloading}/>
                   
                 </form>              
             </div>

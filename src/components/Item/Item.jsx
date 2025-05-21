@@ -72,7 +72,8 @@ export default function Item({
                                         colOrRow = "row"
                                         name = {nameRadio}
                                         value = {7}
-                                        captureCheckRadio= {setSelectedRadio}          
+                                        captureCheckRadio= {setSelectedRadio}
+                                        required = {true}          
                             />
                             <InputLabel label="B"
                                         type="radio"
@@ -99,6 +100,7 @@ export default function Item({
                                     rowInput = "4"
                                     colInput="40"
                                     disabledJustify={enableJustify}
+                                    required = {!enableJustify}
                                     captureOnChangeText={setJustification}/>
                     </div>
                 </>  }

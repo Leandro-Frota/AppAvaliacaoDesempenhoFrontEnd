@@ -2,7 +2,7 @@
 import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-import ButtonSubmit from "@/components/Button/button";
+import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
 
@@ -31,13 +31,11 @@ export  default function Question3(){
 
         try{
             const response = await saveStepData(employeeId, "Commiment Results", values);
-            console.log(response.data);
             router.push('/questionBehavior'); 
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
-        }finally
-        {
+        }finally{
             setIsLoading(false);
         } 
     }
@@ -57,21 +55,24 @@ export  default function Question3(){
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
             {isLoading && <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>}
-            <h2 className="font-bold text-2xl text-center">Quesito 3 - Compromisso com resultados </h2> 
-            {questions.map((question) => (
-                <Item
-                    key={question.id}
-                    item={question.id}
-                    nameRadio={question.id}
-                    title={question.title}
-                    description={question.description}
-                    person
-                    course = {false}
-                    recognition = {false}
-                    handleRadioChange={handleRadioChange}
-                />
-            ))}
-            <ButtonSubmit onClick={handleSubmit} text="Avançar" disabled={isLoading}/>
+            <h2 className="font-bold text-2xl text-center">Quesito 3 - Compromisso com resultados </h2>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2 mt-5">
+                <p className="text-start">Avalie o colaborador de acordo com os critérios abaixo:</p> 
+                {questions.map((question) => (
+                    <Item
+                        key={question.id}
+                        item={question.id}
+                        nameRadio={question.id}
+                        title={question.title}
+                        description={question.description}
+                        person
+                        course = {false}
+                        recognition = {false}
+                        handleRadioChange={handleRadioChange}
+                    />
+                ))}
+                <ButtonSubmit type="submit" text="Avançar" disabled={isLoading}/>
+            </form>
         </div>
     )
 }

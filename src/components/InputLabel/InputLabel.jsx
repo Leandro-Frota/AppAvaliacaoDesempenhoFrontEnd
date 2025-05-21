@@ -18,7 +18,8 @@ export default function InputLabel({label,
                                     maxPound,
                                     minPound,
                                     placeholder,
-                                    size
+                                    size,
+                                    required = false,
                                     }){
 
     function captureChange(e){
@@ -52,7 +53,8 @@ export default function InputLabel({label,
                                         rows = {rowInput}
                                         disabled= {disabledJustify}
                                         onChange={captureText}
-                                        required
+                                        required={required}
+                                   
                                        
                             />
                                 :                  
@@ -63,7 +65,7 @@ export default function InputLabel({label,
                                         className={className}
                                         name={name}
                                         value={value}
-                                        required
+                                        required={required}
                                         min={minPound}
                                         max={maxPound}
                                         size={size}/>                   

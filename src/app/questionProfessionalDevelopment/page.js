@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
+import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 
 export  default function Question5(){
     const [values, setValues] = useState({});
@@ -22,7 +23,6 @@ export  default function Question5(){
     
             try{
                 const response = await saveStepData(employeeId, "Professional Development", values);
-                console.log(response.data);
                 router.push('/questionInternalRecognition'); // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);
@@ -30,11 +30,8 @@ export  default function Question5(){
             }finally{
                 setIsLoading(false);
             }
-
     }
 
-
-     
     const questions = [
         {id: 5.1, title: "Cursos Promovidos pela empresa", description: "Conteúdo dentro da área de atuação com carga horária de 80 Horas (4 Pontos)", value: 4},
         {id: 5.2, title: "Cursos Promovidos pela empresa", description: "Conteúdo dentro da área de atuação com carga horária de 40 Horas (2 Pontos)", value: 2},
@@ -68,6 +65,8 @@ export  default function Question5(){
         <div className='w-full h-full flex flex-col gap-1 p-10'>
             {isLoading && <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>}
             <h2 className="font-bold text-2xl">Quesito 5 - Desenvolvimento Profissional </h2>
+            <p className="text-start">Avalie o colaborador de acordo com os critérios abaixo:</p>
+            <p className="text-sm text-gray-500">Selecione os cursos realizados pelo colaborador e clique em avançar.</p>
             {questions.map((question) => (
                 <Item
                     key={question.id}
@@ -83,8 +82,7 @@ export  default function Question5(){
                     
                 />
             ))}    
-            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleSubmit} disabled={isLoading}>Avançar</button>                               
-
+            <ButtonSubmit type="submit" text="Avançar" onClick={handleSubmit} disabled={isLoading}/>
         </div>
     )
 }

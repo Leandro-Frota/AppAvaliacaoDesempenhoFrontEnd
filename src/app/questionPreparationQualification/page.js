@@ -2,7 +2,7 @@
 import Item from "@/components/Item/Item"
 import { useCallback, useState } from "react"
 import { useRouter } from "next/navigation";
-import ButtonSubmit from "@/components/Button/Button";
+import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
 
@@ -66,26 +66,28 @@ export  default function Question1(){
                 <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>
             }
             <div className='w-full h-full flex flex-col gap-2 p-10'>
-                <h2 className="font-bold text-2xl text-center">Quesito 1 - Preparo e Qualificação </h2>
-                {questions.map((question) => (
-                    <Item
-                        key={question.id}
-                        item={question.id}
-                        nameRadio={question.id}
-                        title={question.title}
-                        description={question.description}
-                        person
-                        course = {false}
-                        recognition = {false}
-                        valueItem = {0}
-                        handleRadioChange = {handleRadioChange}
-                    />
-                ))}          
-                <div className="flex justify-center">
-                    <p className="text-sm text-gray-500">* Para cada item, escolha a opção que melhor descreve o desempenho do funcionário.</p> 
-                </div>
-                <ButtonSubmit onClick={handleSubmit} text="Avançar" disabled={isLoading}/>                      
+                    <h2 className="font-bold text-2xl text-center">Quesito 1 - Preparo e Qualificação </h2>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-2 mt-5">
+                            <p className="text-sm text-gray-500">Para cada item, escolha a opção que melhor descreve o desempenho do funcionário.</p>
+                        {questions.map((question) => (
+                            <Item
+                                key={question.id}
+                                item={question.id}
+                                nameRadio={question.id}
+                                title={question.title}
+                                description={question.description}
+                                person
+                                course = {false}
+                                recognition = {false}
+                                valueItem = {0}
+                                handleRadioChange = {handleRadioChange}
+                            />
+                        ))}          
+                        
+                        <ButtonSubmit type="submit" text="Avançar" disabled={isLoading}/> 
+                    </form>                     
             </div>
+       
     </>
     )
 }
