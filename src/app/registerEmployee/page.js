@@ -35,7 +35,7 @@ export default function Register(){
 
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
-                alert("Funcionário registrado com sucesso!");
+                alert("Dados enviados");
                 router.push('/questionPreparationQualification');
                 return;
             }else {

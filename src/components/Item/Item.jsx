@@ -22,8 +22,6 @@ export default function Item({
         const [descriptionItem, setDescriptionItem] = useState("")  
         const [enableJustify, setEnableJustify] = useState(true)
 
-        console.log(descriptionItem , "descriptionItem")
-
       useEffect(()=>{
         if(selectedRadio && handleRadioChange){
             setDescriptionItem(description)
