@@ -4,10 +4,12 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import ButtonSubmit from "@/components/Button/button";
 import { saveStepData } from "@/service/apiService";
+import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
 
 
 export  default function Question3(){
     const [values, setValues] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
   
     const handleRadioChange = useCallback((item, score, justification, description) => {        
@@ -19,6 +21,7 @@ export  default function Question3(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const employeeId = localStorage.getItem('employeeId');
    
         if(!employeeId) {
@@ -33,6 +36,9 @@ export  default function Question3(){
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
+        }finally
+        {
+            setIsLoading(false);
         } 
     }
 
@@ -50,6 +56,7 @@ export  default function Question3(){
 
     return (
         <div className='w-full h-full flex flex-col gap-1 p-10'>
+            {isLoading && <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>}
             <h2 className="font-bold text-2xl text-center">Quesito 3 - Compromisso com resultados </h2> 
             {questions.map((question) => (
                 <Item
@@ -64,7 +71,7 @@ export  default function Question3(){
                     handleRadioChange={handleRadioChange}
                 />
             ))}
-            <ButtonSubmit onClick={handleSubmit} text="Avançar"/>
+            <ButtonSubmit onClick={handleSubmit} text="Avançar" disabled={isLoading}/>
         </div>
     )
 }

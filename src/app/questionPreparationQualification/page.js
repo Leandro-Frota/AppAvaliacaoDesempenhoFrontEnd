@@ -4,9 +4,11 @@ import { useCallback, useState } from "react"
 import { useRouter } from "next/navigation";
 import ButtonSubmit from "@/components/Button/Button";
 import { saveStepData } from "@/service/apiService";
+import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
 
 export  default function Question1(){
     const [values, setValues] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
  
     const handleRadioChange  = useCallback((item, score, justification, description) => {        
@@ -18,6 +20,7 @@ export  default function Question1(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const employeeId = localStorage.getItem('employeeId');
 
         if(!employeeId) {
@@ -32,7 +35,9 @@ export  default function Question1(){
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
-        }        
+        }finally{
+            setIsLoading(false);
+        }      
     };
 
    const descriptionItem = {
@@ -56,24 +61,31 @@ export  default function Question1(){
     ]
     
     return (
-        <div className='w-full h-full flex flex-col gap-2 p-10'>
-            <h2 className="font-bold text-2xl text-center">Quesito 1 - Preparo e Qualificação </h2>
-            {questions.map((question) => (
-                <Item
-                    key={question.id}
-                    item={question.id}
-                    nameRadio={question.id}
-                    title={question.title}
-                    description={question.description}
-                    person
-                    course = {false}
-                    recognition = {false}
-                    valueItem = {0}
-                    handleRadioChange = {handleRadioChange}
-                />
-            ))}          
-            <p>Pontuação: </p>
-            <ButtonSubmit onClick={handleSubmit} text="Avançar"/>                      
-        </div>
+        <>
+            {isLoading &&
+                <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>
+            }
+            <div className='w-full h-full flex flex-col gap-2 p-10'>
+                <h2 className="font-bold text-2xl text-center">Quesito 1 - Preparo e Qualificação </h2>
+                {questions.map((question) => (
+                    <Item
+                        key={question.id}
+                        item={question.id}
+                        nameRadio={question.id}
+                        title={question.title}
+                        description={question.description}
+                        person
+                        course = {false}
+                        recognition = {false}
+                        valueItem = {0}
+                        handleRadioChange = {handleRadioChange}
+                    />
+                ))}          
+                <div className="flex justify-center">
+                    <p className="text-sm text-gray-500">* Para cada item, escolha a opção que melhor descreve o desempenho do funcionário.</p> 
+                </div>
+                <ButtonSubmit onClick={handleSubmit} text="Avançar" disabled={isLoading}/>                      
+            </div>
+    </>
     )
 }

@@ -5,10 +5,12 @@ import InputLabel from "@/components/InputLabel/InputLabel";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerEmployee } from "@/service/apiService";
+import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
 
 
 export default function Register(){
     const [valuesRegister, setValuesRegister] = useState({});
+    const [isloading,setIsLoading] = useState(false)
 
     const router = useRouter();  
 
@@ -25,6 +27,7 @@ export default function Register(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
         try {
             const response = await registerEmployee(valuesRegister);
 
@@ -42,7 +45,9 @@ export default function Register(){
         } catch (error) {
             console.error("Erro ao registrar funcionário:", error);
             alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
-        }       
+        }finally{
+            setIsLoading(false)
+        }      
     }    
     
     const inputs = [
@@ -54,6 +59,10 @@ export default function Register(){
 
     return (
         <div className="w-full  p-10">
+            {isloading && 
+              <ModalIsLoading isloading={isloading} message="Regsitrando"/>
+            }
+            
             <div className="text-start text-xl">
                 <h2 className="font-bold text-2xl text-center">Cadastro de Funcionário</h2>
             </div>
@@ -71,7 +80,7 @@ export default function Register(){
                         />
                     ))} 
                     
-                    <ButtonSubmit  text="Avançar" onClick={handleSubmit}/>
+                    <ButtonSubmit  text="Avançar" onClick={handleSubmit} disabled={isloading}/>
                   
                 </form>              
             </div>
