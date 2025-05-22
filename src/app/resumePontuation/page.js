@@ -1,36 +1,11 @@
-'use client'
-import ResumeQuestion from "@/components/ResumeQuestion/ResumeQuestion"
-import { getEmployees } from "@/service/apiService"
-import { useState,useEffect} from "react";
-import SearchEmployee from "@/components/SearchEmployee/SearchEmployee"
 
+import ResumePontuationClient from "@/components/ResumePontuationClient/ResumePontuationClient";
 
-export  default function ResumePontuation(){
+export const dynamic = 'force-dynamic'; // evita caching do lado do servidor
 
-    const [values, setValues] = useState();
-    const [employeeFilter, setEmployeeFilter] = useState([]);
-    console.log('employeeFilter', employeeFilter);
+export default async function ResumePontuationPage() {
+  const res = await fetch("http://localhost:3001/employees", { cache: 'no-store' });
+  const employees = await res.json();
 
-    useEffect(() => {
-        const fetchEmployees = async () => {
-            try{
-                const response = await getEmployees();
-                console.log('Response',response.data);
-                setValues(response.data);
-            }catch (error) {
-                console.error("Error fetching employees:", error);
-                // alert("Erro ao buscar funcionários. Tente novamente mais tarde.");
-            }
-        };
-        fetchEmployees();
-    }, []);
-
-    return (
-        <div className='w-full h-full flex flex-col gap-2 p-10'>
-            <h1 className="font-bold text-2xl">Resumo da Avaliação por Funcionário</h1>
-            <SearchEmployee listValuesEmployee={values} setEmployeeFilter={setEmployeeFilter}/>                      
-            <ResumeQuestion  employee={employeeFilter}/>              
-                                        
-        </div>
-    )
+  return <ResumePontuationClient values={employees} />;
 }

@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr"
 import InputLabel from "../InputLabel/InputLabel";
@@ -6,7 +7,10 @@ import InputLabel from "../InputLabel/InputLabel";
 
 export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
         const [employeeSearch, setEmployeeSearch] = useState('');
-        console.log('emploueeSeacrh',employeeSearch)
+
+        if(!Array.isArray(listValuesEmployee)){
+            return null
+        }
 
         const handleFilterChange = (value) => {
             setEmployeeSearch(value);
@@ -39,6 +43,13 @@ export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
                     captureOnChangeText={handleFilterChange}
                     size={64}
             />
+            {/* <select name="employee" id="employeeSelect">
+                {listValuesEmployee.map((employee) => (
+                    <option key={employee._id} value={employee.name}>
+                        {employee.name}
+                    </option>
+                ))}
+            </select> */}
             <button className="bg-blue-500 text-white rounded px-2 py-1 mt-1"
                     type="submit">
                     <MagnifyingGlass size={16} color="#faf5f5" />

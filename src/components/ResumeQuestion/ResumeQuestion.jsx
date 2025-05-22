@@ -1,19 +1,16 @@
     'use client'
     import { useRef } from "react";
-    import html2pdf from "html2pdf.js";
 
     export default function ResumeQuestion({employee}){
         const printRef = useRef(null);
 
         const person = Array.isArray(employee) ? employee[0] : employee;
-        console.log('person', person);
+
         if(!person){
             return console.log('Nenhum funcionário encontrado');
         }
 
         const sections = person.steps || {};
-        console.log('sections', sections);
-
 
         const sectionTranslations = {
             "Behavior": "Comportamento",
@@ -27,8 +24,9 @@
         const sectonsWithoutJustification = ["Professional Development", "Internal Recognition"]
 
         const handlePrint = async () => {
-            // const html2pdf = (await import("html2pdf.js")).default;
+
             const printContent = printRef.current;
+            const html2pdf = (await import("html2pdf.js")).default;
 
             const options = {
                 margin: 0.5,
