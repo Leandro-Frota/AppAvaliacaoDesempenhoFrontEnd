@@ -35,7 +35,7 @@ export  default function Question6(){
             const response = await saveStepData(employeeId, "Internal Recognition", values);
             localStorage.removeItem('employeeId');
             alert("Dados salvos com sucesso!");
-            router.push('/introduction');
+            router.push('/about');
         }catch (error) {
             console.error("Error saving step data:", error);
             alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");

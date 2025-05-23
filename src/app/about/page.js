@@ -1,6 +1,6 @@
 "use client"
 
-export default function Introducion() {
+export default function About() {
   return (
     <main className="h-full w-full flex flex-col">     
 
