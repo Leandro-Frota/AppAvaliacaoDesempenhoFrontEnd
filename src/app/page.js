@@ -14,7 +14,7 @@ export default function Home() {
  
      // Simulação de login (substituir por chamada real à API)
      if (email === 'admin@email.com' && senha === '123456') {
-       router.push('/introducion'); // Redireciona após login
+       router.push('/about'); // Redireciona após login
      } else {
        setErro('Credenciais inválidas');
      }

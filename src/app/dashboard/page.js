@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useEffect, useState } from 'react';
 import { getEmployees } from '@/service/apiService';
@@ -32,19 +31,16 @@ export default function Dashboard() {
                 console.log("Deletar funcionário clicado",id)
             )
         }
-
         const HandleEditEmployee = (id) => {
             return (
                 console.log("Editar funcionário clicado",id)
             )
-        }
-
-        
+        }       
 
     return(
         <div className='w-full h-full flex flex-col gap-2 p-10'>
             <h1 className="font-bold text-2xl">Funcionários Cadastrados</h1>
-            <p className="text-start mt-4">Aqui estão os funcionários cadastrados no sistema. Você pode editar ou deletar os registros conforme necessário.</p>
+            <p className="text-start mt-4">Aqui estão os funcionários cadastrados no sistema. Você pode editar ou deletar os registros conforme nescessário.</p>
                 <table className="w-full mt-4 border-collapse border border-gray-300">
                     <thead className="bg-gray-200 p-2">
                         <tr className="border border-gray-300">
@@ -73,9 +69,7 @@ export default function Dashboard() {
                         </tr>
                         ))}
                     </tbody>
-                </table> 
-                    
-            </div>  
-
+                </table>                    
+            </div>
         )
  }
