@@ -60,7 +60,9 @@
                             {Object.entries(items).map(([itemKey,item]) => (
                                 <div key={itemKey} className="flex flex-col gap-1 border border-gray-600 p-2">
                                     <p><strong>Item:</strong>{itemKey}</p>
-                                    <p><strong>Descrição: </strong>{item.description || "Não informada"}</p>
+                                    {(item.nameCourse ?
+                                        <p><strong>Curso: </strong>{item.nameCourse || "Não informado"}</p> :
+                                        <p><strong>Descrição: </strong>{item.description || "Não informada"}</p>)}                                    
                                     <p><strong>Pontos: </strong>{item.score ?? "N/A"}</p>                                    
                                     {(item.score ==7 && !sectonsWithoutJustification.includes(sectionName)) &&
                                         <p><strong>Justificativa:</strong> {item.justification || "Não informada"}</p>}

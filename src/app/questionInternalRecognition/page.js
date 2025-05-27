@@ -59,20 +59,24 @@ export  default function Question6(){
         <div className='w-full h-full flex flex-col gap-1 p-10'>
             {isLoading && <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>}
             <h2 className="font-bold text-2xl">Quesito 6 - Reconhecimento interno </h2>
-            {questions.map((question) => (
-                <Item
-                    key={question.id}
-                    item={question.id}
-                    nameRadio={question.id}
-                    title={question.title}
-                    description={question.description}
-                    person={false}
-                    course = {false}
-                    recognition = {true}
-                    handleNumberChange={handleNumberChange}
-                />
-            ))}
-            <ButtonSubmit type='submit' text="Concluir" onClick={handleSubmit} disabele={isLoading}/>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+                <p className="text-gray-600">Para cada elogio ou honra ao mérito, registre um ponto positivo. O total de pontos será somado ao final do processo.</p>
+                {questions.map((question) => (
+                    <Item
+                        key={question.id}
+                        item={question.id}
+                        nameRadio={question.id}
+                        title={question.title}
+                        description={question.description}
+                        person={false}
+                        course = {false}
+                        recognition = {true}
+                        handleNumberChange={handleNumberChange}
+                        required={true}
+                    />
+                ))}
+                <ButtonSubmit type='submit' text="Concluir"  disabele={isLoading}/>
+            </form>
         </div>
     )
 }

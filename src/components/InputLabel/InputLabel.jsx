@@ -24,7 +24,7 @@ export default function InputLabel({label,
 
     function captureChange(e){
         if(type === "checkbox"){
-             captureCheckbox(e.target.value)          
+             captureCheckbox(e.target.checked ? Number(e.target.value) : 0)        
       
         }else if(type === "radio"){
             captureCheckRadio(e.target.value)
@@ -34,11 +34,11 @@ export default function InputLabel({label,
         }
     }
 
-    function captureText(value){
+    function captureText(e){
         if(captureValuesRegister){
-            captureValuesRegister(name, value.target.value)}
+            captureValuesRegister(name, e.target.value)}
         else{
-            captureOnChangeText(value.target.value)
+            captureOnChangeText(e.target.value ? e.target.value : "")
         }
     }
  

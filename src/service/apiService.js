@@ -1,7 +1,8 @@
+import { URL_API } from "@/Utils/constants/constants";
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL, // Replace with your actual API URL
+    baseURL: URL_API, // Replace with your actual API URL
     headers: {
         "Content-Type": "application/json",
     },

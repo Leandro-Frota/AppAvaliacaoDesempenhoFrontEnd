@@ -65,24 +65,26 @@ export  default function Question5(){
         <div className='w-full h-full flex flex-col gap-1 p-10'>
             {isLoading && <ModalIsLoading isLoading={isLoading} message="Enviando Dados"/>}
             <h2 className="font-bold text-2xl">Quesito 5 - Desenvolvimento Profissional </h2>
-            <p className="text-start">Avalie o colaborador de acordo com os critérios abaixo:</p>
-            <p className="text-sm text-gray-500">Selecione os cursos realizados pelo colaborador e clique em avançar.</p>
-            {questions.map((question) => (
-                <Item
-                    key={question.id}
-                    item={question.id}
-                    nameRadio={question.id}
-                    title={question.title}
-                    description={question.description}
-                    person={false}
-                    recognition = {false}
-                    course
-                    value={question.value}
-                    handleCheckBoxChange={handleCheckBoxChange}
-                    
-                />
-            ))}    
-            <ButtonSubmit type="submit" text="Avançar" onClick={handleSubmit} disabled={isLoading}/>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2 mt-5">
+                 <p className="text-start">Avalie o colaborador de acordo com os critérios abaixo:</p>
+                <p className="text-sm text-gray-500">Selecione os cursos realizados pelo colaborador, digite o nome do curso e clique em avançar.</p>
+                {questions.map((question) => (
+                    <Item
+                        key={question.id}
+                        item={question.id}
+                        nameRadio={question.id}
+                        title={question.title}
+                        description={question.description}
+                        person={false}
+                        recognition = {false}
+                        course
+                        value={question.value}
+                        handleCheckBoxChange={handleCheckBoxChange}
+                        
+                    />
+                ))}    
+                <ButtonSubmit type="submit" text="Avançar"  disabled={isLoading}/>
+            </form>
         </div>
     )
 }

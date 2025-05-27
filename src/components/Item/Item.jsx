@@ -21,6 +21,12 @@ export default function Item({
         const[justification,setJustification] = useState("")
         const [descriptionItem, setDescriptionItem] = useState("")  
         const [enableJustify, setEnableJustify] = useState(true)
+        const [nameCourse, setNameCourse] = useState("")
+
+     
+        console.log("selectedNumber", selectedNumber)
+        const requiredTest = selectedCheckbox>0 ? true : false
+       
 
       useEffect(()=>{
         if(selectedRadio && handleRadioChange){
@@ -30,7 +36,7 @@ export default function Item({
 
         if(selectedCheckbox && handleCheckBoxChange){
             setDescriptionItem(description)
-            handleCheckBoxChange(item,selectedCheckbox,justification, descriptionItem)
+            handleCheckBoxChange(item,selectedCheckbox,nameCourse, descriptionItem)
         }
 
         if(selectedNumber && handleNumberChange){
@@ -113,7 +119,8 @@ export default function Item({
                                     className="border outline-1 p-1 rounded-md"
                                     size={70}
                                     colOrRow = "col"
-                                    captureOnChangeText= {setJustification}/>
+                                    captureOnChangeText= {setNameCourse}
+                                    required = {requiredTest}/>
                         <InputLabel label=""
                                     type="checkbox"
                                     className="flex-1 rounded w-5 "
@@ -132,7 +139,8 @@ export default function Item({
                                         maxPound="10"
                                         className="flex-1 w-full border outline-1 p-1 rounded-md"
                                         colOrRow = "col"
-                                        captureCheckNumber={setSelectedNumber}/>
+                                        captureCheckNumber={setSelectedNumber}
+                                        required/>
                         </div>
                     </>
                 }
