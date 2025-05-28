@@ -32,7 +32,7 @@ export  default function Question6(){
         }
 
         try{
-            const response = await saveStepData(employeeId, "Internal Recognition", values);
+            await saveStepData(employeeId, "Internal Recognition", values);
             localStorage.removeItem('employeeId');
             alert("Dados salvos com sucesso!");
             router.push('/about');

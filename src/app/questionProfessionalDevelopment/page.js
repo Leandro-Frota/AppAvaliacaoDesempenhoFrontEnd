@@ -22,7 +22,7 @@ export  default function Question5(){
             }
     
             try{
-                const response = await saveStepData(employeeId, "Professional Development", values);
+                await saveStepData(employeeId, "Professional Development", values);
                 router.push('/questionInternalRecognition'); // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);

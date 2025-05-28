@@ -29,8 +29,7 @@ export  default function Question2(){
             }
  
             try{
-                const response = await saveStepData(employeeId, "Team Work", values);
-                console.log(response.data);
+                await saveStepData(employeeId, "Team Work", values);
                 router.push('/questionCommimentResults'); // Redireciona para a próxima página // Redireciona para a próxima página
             }catch (error) {
                 console.error("Error saving step data:", error);

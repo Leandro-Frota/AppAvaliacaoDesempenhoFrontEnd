@@ -24,15 +24,12 @@ export default function Register(){
     const className = {
         input : "border-2 border-gray-300 rounded outline-2px-solid p-1 w-100"
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true)
         try {
-            const response = await registerEmployee(valuesRegister);
-
+            await registerEmployee(valuesRegister);
             const employeeId = response?.data?.employee?._id;
-
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
                 alert("Dados enviados");
@@ -48,7 +45,7 @@ export default function Register(){
         }finally{
             setIsLoading(false)
         }      
-    }    
+    } 
     
     const inputs = [
         {id: 1, name: "name", label: "Nome", type: "text"},
@@ -61,8 +58,7 @@ export default function Register(){
         <div className="w-full  p-10">
             {isloading && 
               <ModalIsLoading isloading={isloading} message="Regsitrando dados"/>
-            }
-            
+            }            
             <div className="text-start text-xl">
                 <h2 className="font-bold text-2xl text-center">Cadastro de Funcionário</h2>
             </div>

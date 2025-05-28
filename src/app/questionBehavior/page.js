@@ -29,8 +29,7 @@ export  default function Question4(){
         }
 
         try{
-            const response = await saveStepData(employeeId, "Behavior", values);
-            console.log(response.data);
+          await saveStepData(employeeId, "Behavior", values);
             router.push('/questionProfessionalDevelopment'); 
         }catch (error) {
             console.error("Error saving step data:", error);

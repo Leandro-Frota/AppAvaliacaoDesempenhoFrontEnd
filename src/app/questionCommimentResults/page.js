@@ -30,7 +30,7 @@ export  default function Question3(){
         }
 
         try{
-            const response = await saveStepData(employeeId, "Commiment Results", values);
+            await saveStepData(employeeId, "Commiment Results", values);
             router.push('/questionBehavior'); 
         }catch (error) {
             console.error("Error saving step data:", error);

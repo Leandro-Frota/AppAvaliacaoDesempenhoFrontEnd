@@ -1,66 +1,21 @@
-"use client"
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+'use client';
 
+import Login from '@/components/Login/Login';
 
 export default function Home() {
-    const [email, setEmail] = useState('');
-   const [senha, setSenha] = useState('');
-   const [erro, setErro] = useState('');
-   const router = useRouter();
- 
-   const handleLogin = async (e) => {
-     e.preventDefault();
- 
-     // Simulação de login (substituir por chamada real à API)
-     if (email === 'admin@email.com' && senha === '123456') {
-       router.push('/about'); // Redireciona após login
-     } else {
-       setErro('Credenciais inválidas');
-     }
-   };
- 
-   return (
-     <div className="flex items-center justify-center min-w-full min-h-screen  bg-gray-100">
-       <form
-         onSubmit={handleLogin}
-         className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm"
-       >
-         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
- 
-         {erro && (
-           <p className="text-red-600 text-sm mb-4 text-center">{erro}</p>
-         )}
- 
-         <label className="block mb-2 text-sm font-medium text-gray-700">
-           Email
-         </label>
-         <input
-           type="email"
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}
-           className="w-full p-2 border border-gray-300 rounded-lg mb-4"
-           required
-         />
- 
-         <label className="block mb-2 text-sm font-medium text-gray-700">
-           Senha
-         </label>
-         <input
-           type="password"
-           value={senha}
-           onChange={(e) => setSenha(e.target.value)}
-           className="w-full p-2 border border-gray-300 rounded-lg mb-6"
-           required
-         />
- 
-         <button
-           type="submit"
-           className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
-         >
-           Entrar
-         </button>
-       </form>
-     </div>
-   );
+  return (
+    <div className="flex flex-row w-screen min-h-screen">
+      <div className="flex w-full items-center justify-center bg-blue-100">
+        <div className="bg-white p-10 rounded-2xl shadow-lg h-min w-96 text-center">
+            <h2 className="text-3xl font-bold text-blue-600 mb-4">Bem-vindo!</h2>
+            <p className="text-gray-700 text-lg">
+              Acesse sua conta para continuar ao painel administrativo.
+            </p>
+        </div>
+      </div>
+      <div className='flex items-center justify-center w-full h-screen bg-gray-100'>     
+        <Login />
+      </div>      
+    </div>
+  );
 }

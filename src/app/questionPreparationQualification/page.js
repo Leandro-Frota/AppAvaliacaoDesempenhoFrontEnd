@@ -29,8 +29,7 @@ export  default function Question1(){
         }
 
         try{
-            const response = await saveStepData(employeeId, "Preparation and Qualificacion", values);
-            console.log(response.data);
+            await saveStepData(employeeId, "Preparation and Qualificacion", values);
             router.push('/questionTeamWork'); // Redireciona para a próxima página
         }catch (error) {
             console.error("Error saving step data:", error);

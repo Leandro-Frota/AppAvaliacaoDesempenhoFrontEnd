@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { getEmployees } from '@/service/apiService';
-import { Pencil, Trash, TrashSimple } from '@phosphor-icons/react/dist/ssr';
+import { Pencil, TrashSimple } from '@phosphor-icons/react/dist/ssr';
 
 export default function Dashboard() {
      const [employeeListRegistered, setEmployeeListRegistered] = useState([]);
