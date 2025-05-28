@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getEmployees } from '@/service/apiService';
 import { Pencil, TrashSimple } from '@phosphor-icons/react/dist/ssr';
+import { deleteEmployee } from '@/service/apiService';
 
 export default function Dashboard() {
      const [employeeListRegistered, setEmployeeListRegistered] = useState([]);
@@ -27,9 +28,13 @@ export default function Dashboard() {
         }, []);
 
         const HandleDeleteEmployee = (id) => {
-            return (
-                console.log("Deletar funcionário clicado",id)
-            )
+           
+            const employeeDeleted = deleteEmployee(id)
+            if(employeeDeleted){
+                setEmployeeListRegistered(prevList => prevList.filter(item => item._id !== id));
+                alert(`Funcionário deletado com sucesso!`);
+            }
+
         }
         const HandleEditEmployee = (id) => {
             return (
@@ -48,7 +53,7 @@ export default function Dashboard() {
                             <th className="border border-gray-300 p-2">Cargo</th>
                             <th className="border border-gray-300 p-2">Matrícula</th>
                             <th className="border border-gray-300 p-2">Gerência</th>
-                            <th className="border border-gray-300 p-2">Açoes</th>
+                            <th className="border border-gray-300 p-2">Ações</th>
                             {/* <th className="border border-gray-300 p-2">Deletar</th> */}
                         </tr>
                     </thead>
@@ -60,9 +65,9 @@ export default function Dashboard() {
                             <td className="border border-gray-300">{item.registration}</td>
                             <td className="border border-gray-300">{item.management}</td>
                             <td className=" border border-gray-300">
-                                <div className='flex gap-2 justify-center'>
-                                    <Pencil onClick={()=>HandleEditEmployee(item._id)}  className='cursor-pointer text-gray-500' size={20} />
-                                    <TrashSimple onClick={()=>HandleDeleteEmployee(item._id)} className='cursor-pointer text-gray-500' size={20}/>
+                                <div className='flex gap-2 justify-center items-center'>
+                                    <Pencil onClick={()=>HandleEditEmployee(item._id)}  className='cursor-pointer rounded m-1 hover:bg-green-700 hover:text-white text-gray-500' size={20} />
+                                    <TrashSimple onClick={()=>HandleDeleteEmployee(item._id)} className='cursor-pointer rounded hover:red-blue-800  hover:bg-red-700 hover:text-white text-gray-500' size={20}/>
                                 </div>
                             </td>
 

@@ -15,3 +15,5 @@ export const registerEmployee = async (data) => api.post("/employees", data)
 export const saveStepData = async (employeeId,step,data) => api.put(`/employees/${employeeId}/steps/${step}`, data)
 
 export const getStepData = async (employeeId, step) => api.get(`/employees/${employeeId}/step/${step}`)
+
+export const deleteEmployee = async (employeeId) => api.delete(`/employees/${employeeId}`)

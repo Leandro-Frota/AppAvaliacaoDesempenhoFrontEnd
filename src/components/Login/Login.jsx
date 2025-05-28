@@ -59,7 +59,7 @@ export default function Login(){
          >
            Entrar
          </button>
-         <button className='cursor-pointer  mt-1 font-light '>Recuperar senha</button>
+         <button className='cursor-pointer active:to-blue-700 focus:to-blue-700  mt-1 font-light '>Recuperar senha</button>
        </form>
        
      </div>
