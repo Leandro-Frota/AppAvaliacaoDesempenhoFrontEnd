@@ -45,6 +45,10 @@ Acesse no navegador: `http://localhost:3000`
 - Criação de módulos para colaboradores, RH e Setores.
 
 
+## Deploy
+[https://app-avaliacao-desempenho-front-end.vercel.app/](https://app-avaliacao-desempenho-front-end.vercel.app/)
+
+
 
 Desenvolvido por [Leandro Frota](https://github.com/Leandro-Frota).
 
