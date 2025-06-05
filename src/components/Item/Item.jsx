@@ -22,9 +22,7 @@ export default function Item({
         const [descriptionItem, setDescriptionItem] = useState("")  
         const [enableJustify, setEnableJustify] = useState(true)
         const [nameCourse, setNameCourse] = useState("")
-
      
-        console.log("selectedNumber", selectedNumber)
         const requiredTest = selectedCheckbox>0 ? true : false
        
 
@@ -48,14 +46,12 @@ export default function Item({
 
     
     useEffect(()=>{
-
         if(selectedRadio==="7"){
             setEnableJustify(false)
         }else{
             setEnableJustify(true)
             setJustification("")
         }
-    
     },[selectedRadio])
 
     return (

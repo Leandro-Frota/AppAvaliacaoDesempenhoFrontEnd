@@ -30,6 +30,7 @@ export default function Register(){
         try {
             await registerEmployee(valuesRegister);
             const employeeId = response?.data?.employee?._id;
+            console.log('employeeId', employeeId);
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
                 alert("Dados enviados");
