@@ -5,7 +5,7 @@ import InputLabel from "@/components/InputLabel/InputLabel";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerEmployee } from "@/service/apiService";
-import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
+import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 
 
 export default function Register(){

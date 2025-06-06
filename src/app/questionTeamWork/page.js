@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import { saveStepData } from "@/service/apiService";
-import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
+import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 
 export  default function Question2(){
         const [values, setValues] = useState({});

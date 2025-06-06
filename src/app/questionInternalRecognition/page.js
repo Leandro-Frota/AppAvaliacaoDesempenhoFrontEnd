@@ -3,7 +3,7 @@ import Item from "@/components/Item/Item"
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { saveStepData } from "@/service/apiService";
-import ModalIsLoading from "@/components/IsLoadign/ModalIsLoading";
+import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 
 

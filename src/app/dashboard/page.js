@@ -3,13 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { getEmployees, updateDataRegisterEmployee,deleteEmployee } from '@/service/apiService';
 import { Pencil, TrashSimple } from '@phosphor-icons/react/dist/ssr';
 import EditDataRegisterEmployeeModal from '@/components/Modal/EditDataRegisterEmployeeModal';
+import ModalIsLoading from '@/components/IsLoading/ModalIsLoading';
+import DeleteRegisterEmployeeModal from '@/components/Modal/deleteRegisgerEmployeeModal';
 
 export default function Dashboard() {
     const [employeeListRegistered, setEmployeeListRegistered] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+    const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [employeeDataToUpdate, setEmployeeDataToUpdate] = useState({});
+    const [employeeToDelete, setEmployeeToDelete] = useState({});
 
     const fetchEmployees = async () => {
+        setIsLoading(true);
         try{
             const response = await getEmployees();
             console.log('Response',response.data);
@@ -21,6 +27,8 @@ export default function Dashboard() {
         }catch (error) {
             console.error("Error fetching employees:", error);
             alert("Erro ao buscar funcionários. Tente novamente mais tarde.");
+        }finally{
+            setIsLoading(false);
         }
     };
 
@@ -28,16 +36,13 @@ export default function Dashboard() {
         fetchEmployees();
     }, []);
 
-    const HandleDeleteEmployee = (id) => {        
-        const employeeDeleted = deleteEmployee(id)
-        if(employeeDeleted){
-            setEmployeeListRegistered(prevList => prevList.filter(item => item._id !== id));
-            alert(`Funcionário deletado com sucesso!`);
-        }
-
+    const HandleDeleteEmployee = (employeeDeleted) => {
+        setEmployeeToDelete(employeeDeleted);
+        setIsModalDeleteOpen(true);
+        console.log('employeeDeleted', employeeDeleted);       
     }
     const HandleEditEmployee = (employeeDataToUpdate) => {
-        setIsModalOpen(true);
+        setIsModalUpdateOpen(true);
         setEmployeeDataToUpdate(employeeDataToUpdate);
     }
     const saveDataEmployeeUpdate = async (employeeId, data) => {
@@ -55,11 +60,26 @@ export default function Dashboard() {
             console.error("Error updating employee data:", error);
             alert("Erro ao atualizar os dados do funcionário. Tente novamente mais tarde.");
         }
-    }       
+    }
+    const deleteEmployeeById = (employeeId) => {
+        try{
+            deleteEmployee(employeeId);
+            setEmployeeListRegistered(prevList => prevList.filter(item => item._id !== employeeId._id));
+            alert("Funcionário deletado com sucesso!");
+            fetchEmployees(); // Recarrega a lista de funcionários após a exclusão
+            setIsModalDeleteOpen(false);
+        }catch (error) {
+            console.error("Error deleting employee:", error);
+            alert("Erro ao deletar funcionário. Tente novamente mais tarde.");
+        }
+    
+    };
 
     return(
         <div className='w-full h-full flex flex-col gap-2 p-10'>
-            {isModalOpen && <EditDataRegisterEmployeeModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} employeeDataToUpdate={employeeDataToUpdate} saveDataEmployeeUpdate={saveDataEmployeeUpdate}/>}
+            {isLoading && <ModalIsLoading isLoading={isLoading} message="Carregando dados do funcionário..."/>}
+            {isModalUpdateOpen && <EditDataRegisterEmployeeModal isOpen={isModalUpdateOpen} setIsOpen={setIsModalUpdateOpen} employeeDataToUpdate={employeeDataToUpdate} saveDataEmployeeUpdate={saveDataEmployeeUpdate}/>}
+            {isModalDeleteOpen && <DeleteRegisterEmployeeModal isOpen={isModalDeleteOpen} setIsOpen={setIsModalDeleteOpen} employeeIdDeleteData={employeeToDelete}  deleteEmployeeById={deleteEmployeeById} />}
             <h1 className="font-bold text-2xl">Funcionários Cadastrados</h1>
             <p className="text-start mt-4">Aqui estão os funcionários cadastrados no sistema. Você pode editar ou deletar os registros conforme nescessário.</p>
                 <table className="w-full mt-4 border-collapse border border-gray-300">
@@ -83,7 +103,7 @@ export default function Dashboard() {
                             <td className=" border border-gray-300">
                                 <div className='flex gap-2 justify-center items-center'>
                                     <Pencil onClick={()=>HandleEditEmployee(item)}  className='cursor-pointer rounded m-1 hover:bg-green-700 hover:text-white text-gray-500' size={20} />
-                                    <TrashSimple onClick={()=>HandleDeleteEmployee(item._id)} className='cursor-pointer rounded hover:red-blue-800  hover:bg-red-700 hover:text-white text-gray-500' size={20}/>
+                                    <TrashSimple onClick={()=>HandleDeleteEmployee(item)} className='cursor-pointer rounded hover:red-blue-800  hover:bg-red-700 hover:text-white text-gray-500' size={20}/>
                                 </div>
                             </td>
 

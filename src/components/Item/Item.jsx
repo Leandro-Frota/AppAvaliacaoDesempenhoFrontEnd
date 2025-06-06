@@ -42,7 +42,7 @@ export default function Item({
             handleNumberChange(item,selectedNumber, descriptionItem)
         }
     
-    },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,description,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
+    },[selectedRadio,selectedCheckbox,selectedNumber,justification,descriptionItem,nameCourse,description,handleRadioChange,handleCheckBoxChange,handleNumberChange,item])
 
     
     useEffect(()=>{
