@@ -38,7 +38,7 @@ export default function EditDataRegisterEmployeeModal({isOpen, setIsOpen, employ
     if (!isOpen) return null;
 
     return(
-        <div className="flex flex-col absolute inset-0 z-100 items-center justify-center min-h-screen bg-gray-800 bg-opacity-75">
+        <div className="flex flex-col fixed inset-0 z-50 items-center justify-center min-h-screen bg-gray-800 bg-opacity-75">
             <div className="bg-white p-6 rounded-lg shadow-md w-96">
                 <h2 className="text-xl text-center font-semibold mb-4">Editar dados do funcionário</h2>
                 <form onSubmit={onSubmit} className="flex flex-col gap-4">

@@ -1,16 +1,14 @@
 'use client'
 import { useState } from "react";
-import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr"
+import { MagnifyingGlass,XCircle } from "@phosphor-icons/react/dist/ssr"
 import InputLabel from "../InputLabel/InputLabel";
 
 
 
 export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
         const [employeeSearch, setEmployeeSearch] = useState('');
+        console.log(employeeSearch)
 
-        if(!Array.isArray(listValuesEmployee)){
-            return null
-        }
 
         const handleFilterChange = (value) => {
             setEmployeeSearch(value);
@@ -22,6 +20,11 @@ export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
                 alert("Lista de funcionários não encontrada. Tente novamente.");
                 return;
             }
+
+             if (!employeeSearch.trim()) {
+            alert("Digite um nome para buscar.");
+            return;
+    }
             const employeeFound = listValuesEmployee.filter(employee =>(employee?.name || "").toLowerCase().includes(employeeSearch.toLowerCase()));
             setEmployeeFilter(employeeFound);
 
@@ -32,32 +35,27 @@ export default function SearchEmployee({listValuesEmployee,setEmployeeFilter}){
 
         }
         return(
-            <form onSubmit={handleSubmit} className="flex flex-row gap-2 w-full ">
-            <InputLabel
-                    name="buscar"
-                    label=""
-                    type="text"
-                    className="border-2 border-gray-300 rounded outline-2px-solid p-1 w-100"
-                    placeholder="Nome"
-                    value={employeeSearch}
-                    captureOnChangeText={handleFilterChange}
-                    size={64}
-            />
-            {/* <select name="employee" id="employeeSelect">
-                {listValuesEmployee.map((employee) => (
-                    <option key={employee._id} value={employee.name}>
-                        {employee.name}
-                    </option>
-                ))}
-            </select> */}
-            <button className="bg-blue-500 text-white rounded px-2 py-1 mt-1"
-                    type="submit">
-                    <MagnifyingGlass size={16} color="#faf5f5" />
-            </button>
-            <button className="bg-red-500 text-white rounded px-2 py-1 mt-1"
-                    type="button"
-                    onClick={() => setEmployeeFilter([])}>
-                    Limpar
-            </button>
+            <>
+            <form onSubmit={handleSubmit} className="relative flex flex-row align-middle gap-2 w-full ">
+                <InputLabel
+                        name="buscar"
+                        label=""
+                        type="text"
+                        className="border-2 px-10 border-gray-300 rounded outline-2px-solid p-2 w-full"
+                        placeholder="Nome"
+                        value={employeeSearch}
+                        captureOnChangeText={handleFilterChange}
+                        size={64}
+                />
+                <button className="absolute top-1  text-gray-400 rounded p-3"
+                        type="submit">
+                        <MagnifyingGlass size={19} color="#9ca3af" />
+                </button>
+                <button className="absolute top-0 right-0 text-white rounded p-3 mt-1"
+                        type="button"
+                        onClick={() => setEmployeeFilter([])}>
+                        <XCircle size={19} color="#9ca3af" />
+                </button>
             </form>
+            </>
     )}

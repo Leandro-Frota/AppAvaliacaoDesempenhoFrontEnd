@@ -5,6 +5,7 @@ import { Pencil, TrashSimple } from '@phosphor-icons/react/dist/ssr';
 import EditDataRegisterEmployeeModal from '@/components/Modal/EditDataRegisterEmployeeModal';
 import ModalIsLoading from '@/components/IsLoading/ModalIsLoading';
 import DeleteRegisterEmployeeModal from '@/components/Modal/deleteRegisgerEmployeeModal';
+import SearchEmployee from '@/components/SearchEmployee/SearchEmployee';
 
 export default function Dashboard() {
     const [employeeListRegistered, setEmployeeListRegistered] = useState([]);
@@ -13,6 +14,9 @@ export default function Dashboard() {
     const [isLoading, setIsLoading] = useState(false);
     const [employeeDataToUpdate, setEmployeeDataToUpdate] = useState({});
     const [employeeToDelete, setEmployeeToDelete] = useState({});
+    const [employeeFilter, setEmployeeFilter] = useState([]);
+
+    const employeeListSearch = employeeFilter.length > 0 ? employeeFilter : employeeListRegistered;
 
     const fetchEmployees = async () => {
         setIsLoading(true);
@@ -39,7 +43,7 @@ export default function Dashboard() {
     const HandleDeleteEmployee = (employeeDeleted) => {
         setEmployeeToDelete(employeeDeleted);
         setIsModalDeleteOpen(true);
-        console.log('employeeDeleted', employeeDeleted);       
+     
     }
     const HandleEditEmployee = (employeeDataToUpdate) => {
         setIsModalUpdateOpen(true);
@@ -82,25 +86,26 @@ export default function Dashboard() {
             {isModalDeleteOpen && <DeleteRegisterEmployeeModal isOpen={isModalDeleteOpen} setIsOpen={setIsModalDeleteOpen} employeeIdDeleteData={employeeToDelete}  deleteEmployeeById={deleteEmployeeById} />}
             <h1 className="font-bold text-2xl">Funcionários Cadastrados</h1>
             <p className="text-start mt-4">Aqui estão os funcionários cadastrados no sistema. Você pode editar ou deletar os registros conforme nescessário.</p>
-                <table className="w-full mt-4 border-collapse border border-gray-300">
+             <SearchEmployee listValuesEmployee={employeeListRegistered} setEmployeeFilter={setEmployeeFilter} />
+                <table className="w-full mt-4  border-collapse border border-gray-300 rounded">
                     <thead className="bg-gray-200 p-2">
                         <tr className="border border-gray-300">
-                            <th className="border border-gray-300 p-2">Nome</th>
-                            <th className="border border-gray-300 p-2">Cargo</th>
-                            <th className="border border-gray-300 p-2">Matrícula</th>
-                            <th className="border border-gray-300 p-2">Gerência</th>
-                            <th className="border border-gray-300 p-2">Ações</th>
+                            <th className="text-start p-3">Nome</th>
+                            <th className="text-start p-3">Cargo</th>
+                            <th className="text-start p-3">Matrícula</th>
+                            <th className="text-start p-3">Gerência</th>
+                            <th className="text-center p-3">Ações</th>
                             {/* <th className="border border-gray-300 p-2">Deletar</th> */}
                         </tr>
                     </thead>
                     <tbody className="bg-white p-2">
-                        {employeeListRegistered.map((item) => (
+                        {(employeeListSearch).map((item) => (
                         <tr key={item._id} className="border border-gray-300 text-center">
-                            <td className="border border-gray-300">{item.name}</td>
-                            <td className="border border-gray-300">{item.office}</td>
-                            <td className="border border-gray-300">{item.registration}</td>
-                            <td className="border border-gray-300">{item.management}</td>
-                            <td className=" border border-gray-300">
+                            <td className="text-start p-3">{item.name}</td>
+                            <td className="text-blue-700 text-start p-3">{item.office}</td>
+                            <td className="text-start p-3">{item.registration}</td>
+                            <td className="text-blue-700 text-start p-3">{item.management}</td>
+                            <td className="text-center p-3">
                                 <div className='flex gap-2 justify-center items-center'>
                                     <Pencil onClick={()=>HandleEditEmployee(item)}  className='cursor-pointer rounded m-1 hover:bg-green-700 hover:text-white text-gray-500' size={20} />
                                     <TrashSimple onClick={()=>HandleDeleteEmployee(item)} className='cursor-pointer rounded hover:red-blue-800  hover:bg-red-700 hover:text-white text-gray-500' size={20}/>

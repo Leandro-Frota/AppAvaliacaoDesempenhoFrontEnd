@@ -43,7 +43,7 @@ export default function InputLabel({label,
     }
  
     return (
-                <div className= {`flex flex-${colOrRow} gap-1`}>
+                <div className= {`flex flex-${colOrRow} gap-1 w-full`}>
                     <label  >{label}</label>
                     { isTextarea ?
                             <textarea
