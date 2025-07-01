@@ -11,13 +11,15 @@ export default function Header(){
               <li className="text-sm text-gray-600">Sistema de Avaliação de Funcionários</li>
             </ul>
           </div>
-          <div>
+          <div className="flex flex-row gap-4 items-center">
             <ul className="flex flex-row gap-4">
-              <Link href="/about"><li className=" cursor-pointer text-sm text-gray-600">Sobre</li></Link>
-              <li className="text-sm text-gray-600">Contato</li>
-              <li className="text-sm text-gray-600">Ajuda</li>
-              <Link href="/"><SignOut className="text-sm text-gray-600 cursor-pointer" size={20} /></Link>
+              <li className=" cursor-pointer text-sm text-gray-600" aria-label="link para a pagia sobre"><Link href="/about">Sobre</Link></li>
+              <li className=" cursor-pointer text-sm text-gray-600" aria-label="link para a pagia contato"><Link href="/contact">Contato</Link></li>
+              <li className=" cursor-pointer text-sm text-gray-600" aria-label="link para a pagia perfil"><Link href="/profile">Perfil</Link></li>
+              <li className=" cursor-pointer text-sm text-gray-600" aria-label="link para a pagia ajuda"><Link href="/help">Ajuda</Link></li>             
             </ul>
+            <Link href="/"><SignOut className="text-sm text-gray-600 cursor-pointer" size={20} /></Link>
+
           </div>
         </div>
           

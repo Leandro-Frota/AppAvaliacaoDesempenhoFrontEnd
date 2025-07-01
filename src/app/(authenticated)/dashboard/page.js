@@ -4,7 +4,7 @@ import { getEmployees, updateDataRegisterEmployee,deleteEmployee } from '@/servi
 import { Pencil, TrashSimple } from '@phosphor-icons/react/dist/ssr';
 import EditDataRegisterEmployeeModal from '@/components/Modal/EditDataRegisterEmployeeModal';
 import ModalIsLoading from '@/components/IsLoading/ModalIsLoading';
-import DeleteRegisterEmployeeModal from '@/components/Modal/deleteRegisgerEmployeeModal';
+import DeleteRegisterEmployeeModal from '@/components/Modal/DeleteRegisgerEmployeeModal';
 import SearchEmployee from '@/components/SearchEmployee/SearchEmployee';
 
 export default function Dashboard() {

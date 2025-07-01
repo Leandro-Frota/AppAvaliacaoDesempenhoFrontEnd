@@ -28,16 +28,14 @@ export default function Register(){
         e.preventDefault();
         setIsLoading(true)
         try {
-            await registerEmployee(valuesRegister);
+            const response = await registerEmployee(valuesRegister);
             const employeeId = response?.data?.employee?._id;
-            console.log('employeeId', employeeId);
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
-                alert("Dados enviados");
                 router.push('/questionPreparationQualification');
                 return;
             }else {
-                alert("Erro ao registrar funcionário. Tente novamente mais tarde.");
+                alert("Erro ao registrar funcionário. Dados não persistem. Tente novamente mais tarde.");
                 return;
             }           
         } catch (error) {
