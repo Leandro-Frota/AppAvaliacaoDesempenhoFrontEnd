@@ -32,7 +32,7 @@ export default function EditDataRegisterEmployeeModal({isOpen, setIsOpen, employ
             alert("Dados do funcionário não encontrados. Tente novamente.");
             return;
         }
-        saveDataEmployeeUpdate(employeeDataToUpdate._id, data);      
+        saveDataEmployeeUpdate(employeeDataToUpdate._id, data);
     }
 
     if (!isOpen) return null;

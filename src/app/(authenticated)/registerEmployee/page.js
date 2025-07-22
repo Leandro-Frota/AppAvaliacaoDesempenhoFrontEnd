@@ -9,8 +9,10 @@ import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 
 
 export default function Register(){
-    const [valuesRegister, setValuesRegister] = useState({});
+    const [valuesRegister, setValuesRegister] = useState({status: "Em andamento"});
     const [isloading,setIsLoading] = useState(false)
+
+    console.log("valuesRegister", valuesRegister);
 
     const router = useRouter();  
 
@@ -32,9 +34,11 @@ export default function Register(){
             const employeeId = response?.data?.employee?._id;
             if(employeeId) {
                 localStorage.setItem('employeeId', employeeId);
+                alert("Funcionário registrado com sucesso!");
                 router.push('/questionPreparationQualification');
                 return;
             }else {
+                console.error("Erro ao registrar funcionário: Id não identificado.");
                 alert("Erro ao registrar funcionário. Dados não persistem. Tente novamente mais tarde.");
                 return;
             }           
