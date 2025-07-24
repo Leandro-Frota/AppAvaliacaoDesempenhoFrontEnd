@@ -6,11 +6,11 @@ import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import { updateDataRegisterEmployee } from "@/service/apiService";
+import useSaveStep from "@/hooks/useSaveStep";
 
-export default function Question6() {
+export default function QuestionInternalRecognition() {
+    const { isLoading, saveStep } = useSaveStep();
   const [values, setValues] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
   const statusForm = { status: "Concluído" };
 
   const handleNumberChange = useCallback((item, score, description) => {
@@ -39,31 +39,9 @@ export default function Question6() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    const employeeId = localStorage.getItem("employeeId");
-
-    if (!employeeId) {
-      console.error("Employee ID not found in localStorage.");
-      alert(
-        "Funcionário não identificado. Recarregue a página ou reinicie o processo."
-      );
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      await saveStepData(employeeId, "Internal Recognition", values);
-      saveDataEmployeeUpdate(employeeId, statusForm);
-      localStorage.removeItem("employeeId");
-      alert("Dados salvos com sucesso!");
-      router.push("/about");
-    } catch (error) {
-      console.error("Error saving step data:", error);
-      alert("Erro ao salvar os dados da etapa. Tente novamente mais tarde.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    await saveStep("Internal Recognition", values, "/about");
+    saveDataEmployeeUpdate(employeeId, statusForm);
+};
 
   const descriptionItems = {
     description1:
