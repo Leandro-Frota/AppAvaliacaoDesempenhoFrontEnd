@@ -8,7 +8,7 @@ import {
 import { Pencil, TrashSimple } from "@phosphor-icons/react/dist/ssr";
 import EditDataRegisterEmployeeModal from "@/components/Modal/EditDataRegisterEmployeeModal";
 import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
-import DeleteRegisterEmployeeModal from "@/components/Modal/DeleteRegisgerEmployeeModal";
+import DeleteRegisterEmployeeModal from "@/components/Modal/DeleteRegisterEmployeeModal";
 import SearchEmployee from "@/components/SearchEmployee/SearchEmployee";
 
 export default function Dashboard() {

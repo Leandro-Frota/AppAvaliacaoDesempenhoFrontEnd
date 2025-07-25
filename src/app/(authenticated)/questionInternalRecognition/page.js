@@ -1,15 +1,13 @@
 "use client";
 import Item from "@/components/Item/Item";
 import { useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import { saveStepData } from "@/service/apiService";
 import ModalIsLoading from "@/components/IsLoading/ModalIsLoading";
 import ButtonSubmit from "@/components/ButtonSubmit/ButtonSubmit";
 import { updateDataRegisterEmployee } from "@/service/apiService";
 import useSaveStep from "@/hooks/useSaveStep";
 
 export default function QuestionInternalRecognition() {
-    const { isLoading, saveStep } = useSaveStep();
+  const { isLoading, saveStep } = useSaveStep();
   const [values, setValues] = useState({});
   const statusForm = { status: "Concluído" };
 
@@ -40,8 +38,13 @@ export default function QuestionInternalRecognition() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await saveStep("Internal Recognition", values, "/about");
+    const employeeId = localStorage.getItem("employeeId");
+    if (!employeeId) {
+      console.error("Employee ID not found in localStorage.");
+      return;
+    }
     saveDataEmployeeUpdate(employeeId, statusForm);
-};
+  };
 
   const descriptionItems = {
     description1:
@@ -65,7 +68,7 @@ export default function QuestionInternalRecognition() {
         <ModalIsLoading isLoading={isLoading} message="Enviando Dados" />
       )}
       <h2 className="font-bold text-2xl">
-        Quesito 6 - Reconhecimento interno{" "}
+        Quesito 6 - Reconhecimento interno
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <p className="text-gray-600">
