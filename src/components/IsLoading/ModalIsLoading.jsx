@@ -1,5 +1,5 @@
-export default function ModalIsLoading({IsLoading, message="Carregando..."}) {
-    if(!IsLoading) return null;
+export default function ModalIsLoading({isLoading, message="Carregando..."}) {
+    if(!isLoading) return null;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
